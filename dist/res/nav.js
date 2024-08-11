@@ -26,7 +26,7 @@ var splash_text = [
     "Now with backend!",
     "Where back!",
     "New and improved",
-    "v2.5"
+    "Chattttt"
 ];
 var blur_intervalTimer = null;
 var blur_timeoutTimer = null;
