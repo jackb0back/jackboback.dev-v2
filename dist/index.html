@@ -1,196 +1,341 @@
-
 <!DOCTYPE html>
-<html lang="en">
-<head>
+<html lang="en" class="sl-theme-dark">
+  <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Jackboback.dev</title>
-    <link rel="stylesheet" href="res/index.css">
-    <link rel="icon" href="res/pfp.png">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.15.1/cdn/themes/dark.css" />
+    <link rel="stylesheet" href="res/assets/misc.css">
+    <link rel="stylesheet" href="res/assets/index.css">
+    <link rel="icon" href="res/assets/pfp.png">
     <link rel="manifest" href="manifest.json">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.12.0/cdn/themes/dark.css" />
-</head>
-<body>
+  </head>
+  <body>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="https://cdn.jsdelivr.net/gh/nextapps-de/winbox@master/dist/winbox.bundle.min.js"></script>
     <script type="module" src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.12.0/cdn/shoelace-autoloader.js"></script>
-
     <div id="tnav" class="glass">
-        <h1 style="display: inline-block;letter-spacing: -5px" class="rainbow Mars">Jackboback . dev</h1>
-        <h3 style="display: inline;">v2</h3>
-        
+      <h1 style="display: inline-block;letter-spacing: -5px" class="rainbow Mars">Jackboback . dev</h1>
+      <h3 style="display: inline;">v2.5</h3>
+      <div class="tilt">
+        <div id="status" class="pop">Now with backend! </div>
+        <!-- I had to use "&nbsp;" instead of a simple space because the CSS will put a part of it on a separate line -->
+      </div>
     </div>
-
-
-
-
     <div class="header">
-        <div id="snow"></div>
-          <!--Content before waves-->
-          <div class="inner-header flex">
-          <!--Just the logo.. Don't mind this-->
-          
-          </div>
-          
-          <!--Waves Container-->
-          <div>
-            <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-            viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
-            <defs>
-                 <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
-            </defs>
-                <g class="parallax">
-                    <use xlink:href="#gentle-wave" x="48" y="0" fill="var(--c1)" />
-                    <use xlink:href="#gentle-wave" x="48" y="3" fill="var(--c2)" />
-                    <use xlink:href="#gentle-wave" x="48" y="5" fill="var(--c3)" />
-                    <use xlink:href="#gentle-wave" x="48" y="7" fill="var(--c4)" />
-                </g>
-            </svg>
-
-
-            <svg class="waves-top" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-            viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
-            <defs>
-                 <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
-            </defs>
-                <g class="parallax">
-                    <use xlink:href="#gentle-wave" x="48" y="0" fill="var(--c5)" />
-                    <use xlink:href="#gentle-wave" x="48" y="3" fill="var(--c6)" />
-                    <use xlink:href="#gentle-wave" x="48" y="5" fill="var(--c7)" />
-                    <use xlink:href="#gentle-wave" x="48" y="7" fill="var(--c8)" />
-                </g>
-            </svg>
-          </div>
-          <!--Waves end-->
-          
-          </div>
-          <!--Header ends-->
-
-
-
-
-
-
-
-
-
-
-
-
-    <div id="main-content">
-        <div class="cont" id="cont-home">
-            <h1 style="color: red;">[SITE UNDER MAINTENANCE]</h1>
-            <h1>Home</h1>
-            <!--
-            <div onmouseleave="enableScroll()" onmousewheel="scrollContent(this);" class="items" id="home-lat"  style="width: 90%;">
-                <div class="rect glass">test</div>
-                <div class="rect glass"></div>
-                <div class="rect glass"></div>
-                <div class="rect glass">See all...</div>
-              </div>
-              -->
-              <fieldset class="glass">
-                <legend>
-            <h2>Welcome!</h2>
-            </legend>
-            <p>Hi im a 15 year old front end web developer and game dev, I like VR, AR and linux! here <br> is a few laungages im familiar with: </p>
-            
-            <div style="text-align: left;position:relative; left: 50%; transform: translate(-50%,0);width: 15%;">
-                <p>(Best know)</p>
-                <li>Javascript</li>
-                <li>HTML</li>
-                <li>css</li>
-                <li>C#</li>
-                <li>Java</li>
-                <p>(Least known)</p>
-              </div>
-              </fieldset>
-        </div>
-        <div class="cont" id="cont-blog">
-            <h1>Blog</h1>
-            <div class="vertical-items" id="JB_blog" style="height: 70vh;">
-                <div class="vertical-rect glass"><h2 style="margin:0;">Bloggggg</h2><h5 style="margin:0;margin-top:5px;margin-bottom:5px;">Posted by:Jackboback on 12/21/23</h5>
-                Ooga booga2
-                </div>
-                
-            
-            </div>
-        </div>
-        <div class="cont" id="cont-projects">
-            <h1>Projects</h1>
-
-            <div class="vertical-items" id="projects" style="height: 70vh;">
-                <div class="vertical-rect glass">
-                    <div>
-                        <img src="https://media.istockphoto.com/id/1401105799/vector/no-image-vector-symbol-missing-available-icon-no-gallery-for-this-moment-placeholder.jpg?s=612x612&w=0&k=20&c=TW1ZU3X512_3lGWDFhEygj66CT1Ikj1-R51FCdwJ31E=" class="proj-img" alt="">
-                    </div>
-                    <h1 class="proj-tit">Test</h1>
-                    <div class="proj-desc">
-                        asdjajsdhaklsdhasldhaslkdhaskldhaskdhasdhkasdhkasdhklasdhklasdhklasdhklhaskldashkldasdhkhasdklhklasdhasdklashkldad
-                    </div>
-                </div>
-                
-            
-            </div>
-
-
-        </div>
-        <div class="cont" id="cont-contact">
-            <h1>Contact</h1>
-<div class="glass" style="text-align: left;width: 75%;position: relative;left: 50%;transform: translate(-50%,0);padding: 15px;">
-            <h3> <b style="margin: 0;display: inline;color: #5765f2;">Discord (prefered):</b> @jackboback (jackboback#6811) </h3> 
-            <h3> <b style="margin: 0;display: inline;color: #ea4335;">Email:</b> jshouse310@gmail.com </h3> 
-</div>
-<h1>Socials</h1>
-<div class="glass" style="text-align: left;width: 75%;position: relative;left: 50%;transform: translate(-50%,0);padding: 15px;">
-            <h3> <b style="margin: 0;display: inline;color: #000000;">Github:</b> <a href="https://github.com/jackb0back">jackb0back</a></h3> 
-            <h3> <b style="margin: 0;display: inline;color: #ea4335;">Youtube:</b> <a href="https://www.youtube.com/channel/UCvy42JSJSiZiou-WXAIOF9A">Jackboback</a> </h3> 
-            <h3> <b style="margin: 0;display: inline;color: #FC8003;">Scratch:</b> <a href="https://scratch.mit.edu/users/jackboback/">jackboback</a> </h3> 
-            <h3> <b style="margin: 0;display: inline;color: #ff5748;">Itch.io:</b> <a href="https://jackboback.itch.io/">jackboback</a> </h3> 
-            <h3> <b style="margin: 0;display: inline;color: #00ffdd;">Tik</b><b style="color: #f700ff;">tok:</b> <a href="https://www.tiktok.com/@jackboback32">Jackboback32</a> </h3> 
-            <h3> <b style="margin: 0;display: inline;color: #ff4112;">Reddit:</b> <a href="https://www.reddit.com/user/jackboback/">jackboback</a> </h3> 
-
-
-
-        </div>
-        </div>
+      <div id="snow"></div>
+      <!--Content before waves-->
+      <div class="inner-header flex">
+        <!--Just the logo.. Don't mind this-->
+      </div>
+      <!--Waves Container-->
+      <div>
+        <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+          <defs>
+            <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+          </defs>
+          <g class="parallax">
+            <use xlink:href="#gentle-wave" x="48" y="0" fill="var(--c1)" />
+            <use xlink:href="#gentle-wave" x="48" y="3" fill="var(--c2)" />
+            <use xlink:href="#gentle-wave" x="48" y="5" fill="var(--c3)" />
+            <use xlink:href="#gentle-wave" x="48" y="7" fill="var(--c4)" />
+          </g>
+        </svg>
+        <svg class="waves-top" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+          <defs>
+            <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+          </defs>
+          <g class="parallax">
+            <use xlink:href="#gentle-wave" x="48" y="0" fill="var(--c5)" />
+            <use xlink:href="#gentle-wave" x="48" y="3" fill="var(--c6)" />
+            <use xlink:href="#gentle-wave" x="48" y="5" fill="var(--c7)" />
+            <use xlink:href="#gentle-wave" x="48" y="7" fill="var(--c8)" />
+          </g>
+        </svg>
+      </div>
+      <!--Waves end-->
     </div>
+    <!--Header ends-->
+    <div id="main-content">
+      <div class="cont" id="cont-home">
+        <h1 style="color: red;">[SITE UNDER MAINTENANCE]</h1>
+        <h1>Home</h1>
+        <!--
+            <div onmouseleave="enableScroll()" onmousewheel="scrollContent(this);" class="items" id="home-lat"  style="width: 90%;"><div class="rect glass">test</div><div class="rect glass"></div><div class="rect glass"></div><div class="rect glass">See all...</div></div>
+              -->
+        <fieldset id="welcome" class="glass">
+          <legend>
+            <h2>Welcome!</h2>
+          </legend>
+          <p>Hi im a <b id="_age">16</b> year old front end web developer and game dev, I like VR, AR and linux!
+        </fieldset>
+      </div>
+      <div class="cont" id="cont-blog">
+        <h1>Blog</h1>
+        <div id="JB_blog" style="height: 70vh;">
+          <sl-details class="blog-post" summary="Toggle Me"> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </sl-details>
+          <sl-details class="blog-post" summary="Toggle Me"> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </sl-details>
+          <sl-details class="blog-post" summary="Toggle Me"> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </sl-details>
+        </div>
+      </div>
+      <div class="cont" id="cont-projects">
+        <h1>Projects</h1>
+        <div class="card-grid" id="projects" style="height: 70vh;">
+          <div class="card-style">
+            <img src="https://25.media.tumblr.com/tumblr_li9nogR9Wv1qhjikro1_500.gif" class="image-style" />
+            <div class="card-content">
+              <h2>Text here</h2>
+              <p>Here you can see a short description of this card.</p>
+            </div>
+            <div class="card-bottom">
+              <b-button class="btn-primary">See more</b-button>
+            </div>
+          </div>
+          <div class="card-style">
+            <img src="https://25.media.tumblr.com/tumblr_li9nogR9Wv1qhjikro1_500.gif" class="image-style" />
+            <div class="card-content">
+              <h2>Text here</h2>
+              <p>Here you can see a short description of this card.</p>
+            </div>
+            <div class="card-bottom">
+              <b-button class="btn-primary">See more</b-button>
+            </div>
+          </div>
+          <div class="card-style">
+            <img src="https://25.media.tumblr.com/tumblr_li9nogR9Wv1qhjikro1_500.gif" class="image-style" />
+            <div class="card-content">
+              <h2>Text here</h2>
+              <p>Here you can see a short description of this card.</p>
+            </div>
+            <div class="card-bottom">
+              <b-button class="btn-primary">See more</b-button>
+            </div>
+          </div>
+          <div class="card-style">
+            <img src="https://25.media.tumblr.com/tumblr_li9nogR9Wv1qhjikro1_500.gif" class="image-style" />
+            <div class="card-content">
+              <h2>Text here</h2>
+              <p>Here you can see a short description of this card.</p>
+            </div>
+            <div class="card-bottom">
+              <b-button class="btn-primary">See more</b-button>
+            </div>
+          </div>
+          <div class="card-style">
+            <img src="https://25.media.tumblr.com/tumblr_li9nogR9Wv1qhjikro1_500.gif" class="image-style" />
+            <div class="card-content">
+              <h2>Text here</h2>
+              <p>Here you can see a short description of this card.</p>
+            </div>
+            <div class="card-bottom">
+              <b-button class="btn-primary">See more</b-button>
+            </div>
+          </div>
+          <div class="card-style">
+            <img src="https://25.media.tumblr.com/tumblr_li9nogR9Wv1qhjikro1_500.gif" class="image-style" />
+            <div class="card-content">
+              <h2>Text here</h2>
+              <p>Here you can see a short description of this card.</p>
+            </div>
+            <div class="card-bottom">
+              <b-button class="btn-primary">See more</b-button>
+            </div>
+          </div>
+          <div class="card-style">
+            <img src="https://25.media.tumblr.com/tumblr_li9nogR9Wv1qhjikro1_500.gif" class="image-style" />
+            <div class="card-content">
+              <h2>Text here</h2>
+              <p>Here you can see a short description of this card.</p>
+            </div>
+            <div class="card-bottom">
+              <b-button class="btn-primary">See more</b-button>
+            </div>
+          </div>
+          <div class="card-style">
+            <img src="https://25.media.tumblr.com/tumblr_li9nogR9Wv1qhjikro1_500.gif" class="image-style" />
+            <div class="card-content">
+              <h2>Text here</h2>
+              <p>Here you can see a short description of this card.</p>
+            </div>
+            <div class="card-bottom">
+              <b-button class="btn-primary">See more</b-button>
+            </div>
+          </div>
+          <div class="card-style">
+            <img src="https://25.media.tumblr.com/tumblr_li9nogR9Wv1qhjikro1_500.gif" class="image-style" />
+            <div class="card-content">
+              <h2>Text here</h2>
+              <p>Here you can see a short description of this card.</p>
+            </div>
+            <div class="card-bottom">
+              <b-button class="btn-primary">See more</b-button>
+            </div>
+          </div>
+          <div class="card-style">
+            <img src="https://25.media.tumblr.com/tumblr_li9nogR9Wv1qhjikro1_500.gif" class="image-style" />
+            <div class="card-content">
+              <h2>Text here</h2>
+              <p>Here you can see a short description of this card.</p>
+            </div>
+            <div class="card-bottom">
+              <b-button class="btn-primary">See more</b-button>
+            </div>
+          </div>
+          <div class="card-style">
+            <img src="https://25.media.tumblr.com/tumblr_li9nogR9Wv1qhjikro1_500.gif" class="image-style" />
+            <div class="card-content">
+              <h2>Text here</h2>
+              <p>Here you can see a short description of this card.</p>
+            </div>
+            <div class="card-bottom">
+              <b-button class="btn-primary">See more</b-button>
+            </div>
+          </div>
+        </div>
+      </div>
 
 
 
-<div class="glass" id="navBar">
-    <sl-tooltip class="sl-theme-dark" content="Home">
-           <img onclick="showCont('cont-home')" class="icon" src="https://cdn.jsdelivr.net/gh/jackb0back/streamingAssets@main/OASISX/home.png" alt="">
-    </sl-tooltip>
+      <div class="cont" id="cont-contact">
 
-    <sl-tooltip class="sl-theme-dark" content="Blog">
-        <img onclick="showCont('cont-blog')" class="icon" src="res/blog.png" alt="">
-    </sl-tooltip>
+        <h1>About me</h1>
+
+        <div id="about-me">
+            about here
+        </div>
+
+        <div class="glass" id="about-side">
+              <sl-animation name="flip" easing="ease-out" duration="2000" iterations="1">
+                 <img onclick="this.parentElement.play = true" src="res/assets/pfp.png" id="about-pfp" alt="">
+              </sl-animation>
+              <h3 class="center" style="margin: 4px;">Contact me on discord</h3>
+              <b style="color: #818cff;margin: 4px;" class="pp">@jackboback</b> 
+            
+          </div>
+
+        <div class="glass" id="langs">
+          <h4 style="margin: 0;">Langauages</h4>
+         
+            <sl-animation name="rubberBand" duration="1000" iterations="1">
+                <img class="lang" onmouseenter="this.parentElement.play = true" src="https://static-00.iconduck.com/assets.00/js-icon-2048x2048-kbwt89q3.png" alt="langauge">
+            </sl-animation> 
+         
+            <sl-animation name="rubberBand" duration="1000" iterations="1">
+                <img class="lang" onmouseenter="this.parentElement.play = true" src="https://img.icons8.com/color/200/html-5.png" alt="langauge">
+            </sl-animation>
+
+            <sl-animation name="rubberBand" duration="1000" iterations="1">
+                <img class="lang" onmouseenter="this.parentElement.play = true" src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/62/CSS3_logo.svg/2048px-CSS3_logo.svg.png" alt="langauge">
+            </sl-animation>
+
+            <sl-animation name="rubberBand" duration="1000" iterations="1">
+                <img class="lang" onmouseenter="this.parentElement.play = true" src="https://cdn.iconscout.com/icon/free/png-256/free-python-3521655-2945099.png?f=webp&w=256" alt="langauge">
+            </sl-animation> 
+
+            <sl-animation name="rubberBand" duration="1000" iterations="1">
+                <img class="lang" onmouseenter="this.parentElement.play = true" src="https://static-00.iconduck.com/assets.00/c-sharp-c-icon-1822x2048-wuf3ijab.png" alt="langauge">
+            </sl-animation> 
+      
+        </div>
 
 
-    <sl-tooltip class="sl-theme-dark" content="Projects">
-         <img onclick="showCont('cont-projects')" class="icon" src="res/code.png" alt="">
-    </sl-tooltip>
 
-    <sl-tooltip class="sl-theme-dark" content="Socials">
-         <img onclick="showCont('cont-contact')" class="icon" src="res/pfp.png" alt="">
-    </sl-tooltip>
+        <div id="socials">
+          <sl-animation name="rubberBand" duration="1000" iterations="1">
+            <img onmouseenter="this.parentElement.play = true" class="social" src="res/assets/discord.png" alt="social">
+          </sl-animation>
+        </div>
 
-</div>
+<!-- 
+        <h1>Contact</h1>
+        <div class="glass" style="text-align: left;width: 75%;position: relative;left: 50%;transform: translate(-50%,0);padding: 15px;">
+          <h3>
+            <b style="margin: 0;display: inline;color: #5765f2;">Discord (prefered):</b> @jackboback (jackboback#6811)
+          </h3>
+          <h3>
+            <b style="margin: 0;display: inline;color: #ea4335;">Email:</b> jshouse310@gmail.com
+          </h3>
+        </div>
+        <h1>Socials</h1>
+        <div class="glass" style="text-align: left;width: 75%;position: relative;left: 50%;transform: translate(-50%,0);padding: 15px;">
+          <h3>
+            <b style="margin: 0;display: inline;color: #000000;">Github:</b>
+            <a href="https://github.com/jackb0back">jackb0back</a>
+          </h3>
+          <h3>
+            <b style="margin: 0;display: inline;color: #ea4335;">Youtube:</b>
+            <a href="https://www.youtube.com/channel/UCvy42JSJSiZiou-WXAIOF9A">Jackboback</a>
+          </h3>
+          <h3>
+            <b style="margin: 0;display: inline;color: #FC8003;">Scratch:</b>
+            <a href="https://scratch.mit.edu/users/jackboback/">jackboback</a>
+          </h3>
+          <h3>
+            <b style="margin: 0;display: inline;color: #ff5748;">Itch.io:</b>
+            <a href="https://jackboback.itch.io/">jackboback</a>
+          </h3>
+          <h3>
+            <b style="margin: 0;display: inline;color: #00ffdd;">Tik</b>
+            <b style="color: #f700ff;">tok:</b>
+            <a href="https://www.tiktok.com/@jackboback32">Jackboback32</a>
+          </h3>
+          <h3>
+            <b style="margin: 0;display: inline;color: #ff4112;">Reddit:</b>
+            <a href="https://www.reddit.com/user/jackboback/">jackboback</a>
+          </h3>
+        </div>
+         -->
+      </div>
 
 
+
+
+    </div>
+    <div class="glass" id="navBar">
+      <sl-tooltip class="sl-theme-dark" content="Home">
+        <img onclick="showCont('cont-home')" class="icon" src="https://cdn.jsdelivr.net/gh/jackb0back/streamingAssets@main/OASISX/home.png" alt="">
+      </sl-tooltip>
+      <sl-tooltip class="sl-theme-dark" content="Blog">
+        <img onclick="showCont('cont-blog')" class="icon" src="res/assets/blog.png" alt="">
+      </sl-tooltip>
+      <sl-tooltip class="sl-theme-dark" content="Projects">
+        <img onclick="showCont('cont-projects')" class="icon" src="res/assets/code.png" alt="">
+      </sl-tooltip>
+      <sl-tooltip class="sl-theme-dark" content="About">
+        <img onclick="showCont('cont-contact')" class="icon" src="res/assets/pfp.png" alt="">
+      </sl-tooltip>
+    </div>
+    <template id="template-project">
+      <div class="card-style">
+        <img src="https://25.media.tumblr.com/tumblr_li9nogR9Wv1qhjikro1_500.gif" class="image-style proj-img" />
+        <div class="card-content">
+          <h2 class="proj-tit">Text here</h2>
+          <p class="proj-date"></p>
+          <p class="proj-desc">Here you can see a short description of this card.</p>
+        </div>
+        <div class="card-bottom">
+          <a href="javascript:">Download</a>
+          <a href="javascript:">View</a>
+        </div>
+      </div>
+    </template>
     <style>
-        body {
-            background-color: black;
-            color: white;
-            font-family: sans-serif;
-            text-align: center;
-        }
+      body {
+        background-color: black;
+        color: white;
+        font-family: sans-serif;
+        text-align: center;
+      }
     </style>
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2353081821924753"
-    crossorigin="anonymous"></script>
-
-
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2353081821924753" crossorigin="anonymous"></script>
     <script src="res/nav.js"></script>
-</body>
+    <script defer>
+      $("#_age").html(calculateAge("2008-03-10"));
+      setTimeout(function() {
+        // getBlog();
+        // getProjects();
+      }, 1000)
+    </script>
+  </body>
 </html>
