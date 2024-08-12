@@ -4,6 +4,7 @@ var currentNav = home;
 for (let i = 0; i < navs.length; i++) {
     navs[i].style.display = "none";
 }
+var api_route = ".netlify/functions/api"
 var title = document.title;
 var blurMessage = [{
         "title": "Why u leave :(",
@@ -31,23 +32,25 @@ var splash_text = [
 var blur_intervalTimer = null;
 var blur_timeoutTimer = null;
 $("#status").html(splash_text[Math.floor(Math.random()*splash_text.length)])
-window.addEventListener("blur", function() {
-    blur_intervalTimer = setInterval(function() {
-        var rand = Math.floor((Math.random() * blurMessage.length));
-        document.title = blurMessage[rand].title;
-        changeFavicon(blurMessage[rand].icon);
-        //  blur_timeoutTimer = setTimeout(function() {
-        //    document.title = title;
-        //  },4000);
-    }, 6000);
-});
 
-window.addEventListener("focus", function() {
-    clearInterval(blur_intervalTimer);
-    clearTimeout(blur_timeoutTimer);
-    document.title = title;
-    changeFavicon("res/assets/favicon.ico");
-});
+
+// window.addEventListener("blur", function() {
+//     blur_intervalTimer = setInterval(function() {
+//         var rand = Math.floor((Math.random() * blurMessage.length));
+//         document.title = blurMessage[rand].title;
+//         changeFavicon(blurMessage[rand].icon);
+//         //  blur_timeoutTimer = setTimeout(function() {
+//         //    document.title = title;
+//         //  },4000);
+//     }, 6000);
+// });
+
+// window.addEventListener("focus", function() {
+//     clearInterval(blur_intervalTimer);
+//     clearTimeout(blur_timeoutTimer);
+//     document.title = title;
+//     changeFavicon("res/assets/favicon.ico");
+// });
 
 
 
@@ -227,7 +230,7 @@ function displayProjects() {
 }
 
 function getProjects() {
-    fetch(window.location.href + "/api/projects", {
+    fetch(window.location.href +api_route + "/projects", {
             method: 'GET'
         })
         .then(res => res.json())
@@ -272,5 +275,6 @@ function calculateAge(startDate) {
 
 
 
-showCont("cont-contact");
+//showCont("cont-contact");
+showCont("cont-home");
 // tick();
