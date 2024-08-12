@@ -65,9 +65,11 @@ a {
 }
 
 .lang {
-	width: 30px;
-	margin-top: 5px;
-	
+	width: 40px;
+	position: relative;
+	top: 12%;
+	/* margin-top: 5px; */
+
 }
 
 .blog-post {
