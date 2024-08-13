@@ -16,12 +16,19 @@
     <script src="https://cdn.jsdelivr.net/gh/nextapps-de/winbox@master/dist/winbox.bundle.min.js"></script>
     <script type="module" src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.12.0/cdn/shoelace-autoloader.js"></script>
     <div id="tnav" class="glass">
-      <h1 style="display: inline-block;letter-spacing: -5px" class="rainbow Mars">Jackboback . dev</h1>
-      <h3 style="display: inline;">v2.5</h3>
-      <div class="tilt">
-        <div id="status" class="pop">Now with backend! </div>
-        <!-- I had to use "&nbsp;" instead of a simple space because the CSS will put a part of it on a separate line -->
-      </div>
+      <sl-animation name="backInLeft" easing="ease-out" delay="200" duration="2000" iterations="1" play>
+          <h1 style="display: inline-block;letter-spacing: -5px" class="rainbow Mars">Jackboback . dev</h1>
+      </sl-animation>
+
+      <sl-animation name="backInRight" easing="ease-out" delay="200" duration="2000" iterations="1" play>
+          <h3 style="display: inline-block;">v2.5</h3>
+      </sl-animation>
+      <sl-animation name="backInDown" easing="ease-out" duration="1500" iterations="1" play>
+          <div class="tilt">
+            <div id="status" class="pop">Now with backend! </div>
+            <!-- I had to use "&nbsp;" instead of a simple space because the CSS will put a part of it on a separate line -->
+          </div>
+      </sl-animation> 
     </div>
     <div class="header">
       <div id="snow"></div>
@@ -65,12 +72,14 @@
         <!--
             <div onmouseleave="enableScroll()" onmousewheel="scrollContent(this);" class="items" id="home-lat"  style="width: 90%;"><div class="rect glass">test</div><div class="rect glass"></div><div class="rect glass"></div><div class="rect glass">See all...</div></div>
               -->
-        <fieldset id="welcome" class="glass">
-          <legend>
-            <h2>Welcome!</h2>
-          </legend>
-          <p>Hi im a <b id="_age">16</b> year old front end web developer and game dev, I like VR, AR and linux!
-        </fieldset>
+        <sl-animation name="bounce" easing="ease-out" delay="1000" duration="2000" iterations="1" play>
+          <fieldset id="welcome" class="glass">
+            <legend>
+              <h2 style="margin: 0;">Welcome!</h2>
+            </legend>
+            <p>Hi im a <b id="_age">16</b> year old front end web developer and game dev, I like VR, AR and linux!
+          </fieldset>
+      </sl-animation>
       </div>
       <div class="cont" id="cont-blog">
         <h1>Blog</h1>
@@ -340,7 +349,9 @@
       setTimeout(function() {
         // getBlog();
         // getProjects();
-      }, 1000)
+      }, 1000);
+
+     
     </script>
   </body>
 </html>

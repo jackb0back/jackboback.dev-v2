@@ -49,7 +49,6 @@ a {
 
 #about-contact {
 	position: absolute;
-	
 }
 
 #about-pfp {
@@ -98,8 +97,8 @@ a {
 #welcome {
 	width: 80vw;
 	position: relative;
-	left: 50%;
-	transform: translateX(-50%);
+	margin: auto;
+	margin-top: 50px;
 }
 
 .image-style {
@@ -448,4 +447,5 @@ body {
     /* top: 45px; */
     left: 56%;
 	margin-top: -25px;
+	transition: all 1s ease;
 }
