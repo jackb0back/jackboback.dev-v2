@@ -15,6 +15,9 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="https://cdn.jsdelivr.net/gh/nextapps-de/winbox@master/dist/winbox.bundle.min.js"></script>
     <script type="module" src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.12.0/cdn/shoelace-autoloader.js"></script>
+    
+    <div id="fadeout"></div>
+    
     <div id="tnav" class="glass">
       <sl-animation name="backInLeft" easing="ease-out" delay="200" duration="2000" iterations="1" play>
           <h1 style="display: inline-block;letter-spacing: -5px" class="rainbow Mars">Jackboback . dev</h1>
@@ -347,9 +350,17 @@
     <script defer>
       $("#_age").html(calculateAge("2008-03-10"));
       setTimeout(function() {
+        $("#fadeout").css("opacity","0")
+        setTimeout(function(){
+          $("#fadeout").hide()
+        },2500)
         // getBlog();
         // getProjects();
       }, 1000);
+
+      setTimeout(() => {
+        new Audio('res/assets/startup.mp3').play();
+      }, 2000);
 
      
     </script>
