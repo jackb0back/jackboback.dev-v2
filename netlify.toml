@@ -3,6 +3,9 @@
     publish = "dist"
 
 
+[functions]
+  node_bundler = "esbuild"
+
 [[redirects]]
   from = "/api/test"
   to = "/.netlify/functions/api/test"

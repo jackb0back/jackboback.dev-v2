@@ -220,7 +220,7 @@ function displayProjects() {
     for (i in fetchedData.projects) {
         console.log(i)
         var clone = $("#template-project")[0].content.cloneNode(true);
-        console.log($(clone))
+//        console.log($(clone))
         $(clone).find("img")[0].src = fetchedData.projects[i].img;
         $(clone).find(".proj-tit").html(fetchedData.projects[i].name);
         $(clone).find(".proj-desc").html(fetchedData.projects[i].desc);
