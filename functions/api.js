@@ -5,10 +5,12 @@ const serverless = require("serverless-http");
 const express = require("express");
 const bodyParser = require('body-parser');
 const cors = require('cors');
+const { SHA256 } = require('crypto-js');
 const app = express();
 const router = express.Router();
 
 const GITHUB_TOKEN = process.env.GITHUB_TOKEN; // Use the environment variable
+const PASSWORD = "2f35c1073c86b7087a504ad9183f6a24ced9f49a7b29f5aac60acccadd62cafb";
 const REPO_OWNER = 'jackb0back'; // Your GitHub username
 const REPO_NAME = 'streamingAssets'; // Your repository name
 // const FILE_PATH = 'jackboback-dev/projects.db'; // Path to your file in the repo
@@ -126,8 +128,11 @@ router.get("/blog", async (req, res) => {
 
 // Example route to add data
 router.post("/", bodyParser.json(), async (req, res) => {
-  const { action, data } = req.body;
-  
+  const { action, data, password } = req.body;
+  if (SHA256(password).toString() !== PASSWORD) {
+    res.send("Invalid password")
+    return;
+  }
   if (action === "addProject") {
     data._id = generateRandomString(16);
     projects.push(data);

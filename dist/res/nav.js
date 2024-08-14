@@ -71,8 +71,10 @@ var socials = {
         "handel": "@Jackboback32"
     },
 }
+var GAS_url = "https://script.google.com/macros/s/AKfycbx7Ux8dYKjv67ws6cMpohXVtYmU8LtBZmo2KrmuApTunWKQTjIo_gMsCElkozX1fnoUeA/exec";
 var blur_intervalTimer = null;
 var blur_timeoutTimer = null;
+var analytics = [];
 $("#status").html(splash_text[Math.floor(Math.random()*splash_text.length)])
 
 
@@ -236,55 +238,55 @@ function newWin(name, cont, mount, cfg) {
 
 }
 
-var db = "https://script.google.com/macros/s/AKfycbwG9_gq4u8ZPXuV3N8dwJT-P9j5ms4xLfC-5ZKyCbgJEKGw658DW6Ma72-nEuXzZlrS/exec"
+// var db = "https://script.google.com/macros/s/AKfycbwG9_gq4u8ZPXuV3N8dwJT-P9j5ms4xLfC-5ZKyCbgJEKGw658DW6Ma72-nEuXzZlrS/exec"
 var fetchedData = {};
 
-function parseB64Dat(arr) {
-    for (let i = 1; i < arr.length; i++) {
-        arr[i] = JSON.parse(atob(arr[i]));
-    }
+// function parseB64Dat(arr) {
+//     for (let i = 1; i < arr.length; i++) {
+//         arr[i] = JSON.parse(atob(arr[i]));
+//     }
 
-    return arr;
-}
+//     return arr;
+// }
 
-function getCellVal(val, retName, callback) {
-    const formData = new FormData();
-    formData.append("action", "getVal");
-    const url1 = `${db}?key=${val}`;
-    fetch(url1, {
-            method: 'POST',
-            body: formData
-        })
-        .then(res => res.json())
-        .then(data => {
-            // //console.log(data);
-            console.log("%c Fetched " + val + " and placed it in " + retName, "color:lime;");
-            fetchedData[retName] = data.flat();
-            console.table(fetchedData);
-            //alert("all good blud");
-            //QUnit.dump.parse(fetchedData);
-            callback(fetchedData);
-        })
-}
+// function getCellVal(val, retName, callback) {
+//     const formData = new FormData();
+//     formData.append("action", "getVal");
+//     const url1 = `${db}?key=${val}`;
+//     fetch(url1, {
+//             method: 'POST',
+//             body: formData
+//         })
+//         .then(res => res.json())
+//         .then(data => {
+//             // //console.log(data);
+//             console.log("%c Fetched " + val + " and placed it in " + retName, "color:lime;");
+//             fetchedData[retName] = data.flat();
+//             console.table(fetchedData);
+//             //alert("all good blud");
+//             //QUnit.dump.parse(fetchedData);
+//             callback(fetchedData);
+//         })
+// }
 
-function getAllCells(val, retName, callback) {
-    const formData = new FormData();
-    formData.append("action", "getAllValsIn");
-    formData.append("column", val);
-    const url1 = `${db}?key=${val}`;
-    fetch(url1, {
-            method: 'POST',
-            body: formData
-        })
-        .then(res => res.json())
-        .then(data => {
-            //  console.log(data);
-            console.log("%c Fetched " + val + " and placed it in fetchedData." + retName, "color:lime;");
-            fetchedData[retName] = data.flat();
-            console.table(fetchedData);
-            callback(fetchedData);
-        })
-}
+// function getAllCells(val, retName, callback) {
+//     const formData = new FormData();
+//     formData.append("action", "getAllValsIn");
+//     formData.append("column", val);
+//     const url1 = `${db}?key=${val}`;
+//     fetch(url1, {
+//             method: 'POST',
+//             body: formData
+//         })
+//         .then(res => res.json())
+//         .then(data => {
+//             //  console.log(data);
+//             console.log("%c Fetched " + val + " and placed it in fetchedData." + retName, "color:lime;");
+//             fetchedData[retName] = data.flat();
+//             console.table(fetchedData);
+//             callback(fetchedData);
+//         })
+// }
 
 function isBase64(str) {
     if (str === '' || str.trim() === '') {
@@ -399,7 +401,7 @@ function createPost() {
             var res = {
                 "title": title,
                 "cont": btoa(cont),
-                "date": formatDateToMMDDYYYY(new Date())
+                "date": formatDateToMMDDYYYY(new Date()),
             }
 
             const options = {
@@ -407,7 +409,7 @@ function createPost() {
                 headers: {'Content-Type': 'application/json', 'User-Agent': 'insomnia/9.3.3'},
                 body: JSON.stringify({
                     "action":"addBlog",
-                    "key": token,
+                    "password": token,
                     "data": res
                 })
               };
@@ -428,7 +430,9 @@ function createPost() {
     }
 }
 
-
+function route(api) {
+    return window.location + api_route + api;
+}
 
 function handleKeyPress(event) {
     if (event.key == "~") {
@@ -436,10 +440,180 @@ function handleKeyPress(event) {
     }
 }
 
+async function getPublicIP() {
+    try {
+      const response = await fetch('https://api.ipify.org?format=json');
+      const data = await response.json();
+      console.log("IP address: " + data.ip)
+      return data.ip;
+    } catch (error) {
+      console.error('Error fetching IP address:', error);
+      return false;
+    }
+}
 
+async function sendAnalytics() {
+    return new Promise(async (resolve, reject) => {
+        const formData = new FormData();
+        formData.append("action", "uploadStats");
+        formData.append("ip",await getPublicIP())
+        fetch(GAS_url, {
+            method: 'POST',
+            body: formData
+        })
+        .then(response => response.json())
+        .then(result => {
+            // Handle the response from the server
+            console.log('Success:', result);
+            resolve("ok");
+        })
+        .catch(error => {
+            // Handle any errors
+            resolve("err");
+            console.log('Error:', error);
+        });
+    })
+}
+
+
+async function updateCell(cell,data,password) {
+    const formData = new FormData();
+    formData.append("action", "editCell");
+    formData.append("cell", cell);
+    formData.append("data", data);
+    formData.append("password", password);
+    fetch(GAS_url, {
+        method: 'POST',
+        body: formData
+    })
+    .then(response => response.json())
+    .then(result => {
+        // Handle the response from the server
+        console.log('Success:', result);
+    })
+    .catch(error => {
+        // Handle any errors
+        console.log('Error:', error);
+    });
+}
+
+async function pubUpdate() {
+    if (confirm("Publish site update?")) {
+        updateCell("D2",formatDateToMMDDYYYY(new Date()),$("#dev-token").val())
+    }
+}
+
+async function getAnalytics() {
+    const formData = new FormData();
+    formData.append("action", "getStats");
+    fetch(GAS_url, {
+        method: 'POST',
+        body: formData
+    })
+    .then(response => response.json())
+    .then(result => {
+        // Handle the response from the server
+        console.log('Success:', result);
+        analytics = result;
+        displayAnalytics();
+    })
+    .catch(error => {
+        // Handle any errors
+        console.log('Error:', error);
+    });
+}
+
+function displayAnalytics() {
+    $("#_stats").html(`
+    <div class="stat">
+        <b>${analytics[0]}</b> <p>Site views today</p>
+    </div>
+    <div class="stat">
+        <b>${analytics[1]}</b> <p>Site views total</p>
+    </div>
+    <div class="stat">
+        <b>${daysSince(analytics[3])}</b> <p>Days since last update</p>
+    </div>
+    <div class="stat">
+        <b>${daysSince(analytics[4])}</b> <p>Days since last blog post</p>
+    </div>
+    <div class="stat">
+        <b>${daysSince(analytics[5])}</b> <p>Days since last project</p>
+    </div>
+    <div class="stat">
+        <b>${daysTo("03/10")}</b> <p>Days till my birthday</p>
+    </div>
+        `)
+}
+
+
+function daysTo(dateString) {
+    // Parse the input date string
+    const [month, day] = dateString.split('/');
+    const currentYear = new Date().getFullYear();
+    const targetDate = new Date(currentYear, month - 1, day);
+
+    // Get the current date
+    const currentDate = new Date();
+
+    // If the target date has already passed this year, set the target date to next year
+    if (targetDate < currentDate) {
+        targetDate.setFullYear(currentYear + 1);
+    }
+
+    // Calculate the time difference in milliseconds
+    const timeDifference = targetDate - currentDate;
+
+    // Convert the time difference from milliseconds to days
+    const daysDifference = Math.ceil(timeDifference / (1000 * 60 * 60 * 24));
+
+    return daysDifference;
+}
+
+function daysSince(dateString) {
+    // Parse the input date string
+    const [month, day, year] = dateString.split('/');
+    const inputDate = new Date(year, month - 1, day);
+
+    // Get the current date
+    const currentDate = new Date();
+
+    // Calculate the time difference in milliseconds
+    const timeDifference = currentDate - inputDate;
+
+    // Convert the time difference from milliseconds to days
+    const daysDifference = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
+
+    return daysDifference;
+}
+
+function playAudioOnInteraction() {
+    const audio = new Audio('res/assets/music.mp3');
+    audio.volume = 0.1;
+    audio.loop = true;
+    // Function to play the audio and remove the event listeners
+    const playAudio = () => {
+        audio.play();
+        document.removeEventListener('click', playAudio);
+        document.removeEventListener('keydown', playAudio);
+        setTimeout(function(){
+            new Audio('res/assets/begin.mp3').play();
+        },100);
+    };
+
+    // Add event listeners for user interaction
+    document.addEventListener('click', playAudio);
+    document.addEventListener('keydown', playAudio);
+}
 
 
 document.addEventListener('keydown', handleKeyPress);
+sendAnalytics();
+getAnalytics();
+setTimeout(async function(){
+    await sendAnalytics();
+    getAnalytics(); 
+},100)
 // showCont("cont-dev");
 showCont("cont-home",false);
 // tick();

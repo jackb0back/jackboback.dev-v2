@@ -90,11 +90,13 @@
                 <div id="editor"></div>
             </div>
             <br>
-              <input class="inp" type="text" id="dev-token" placeholder="Token">
+              <input class="inp" type="text" id="dev-token" placeholder="Dev password">
               <input class="inp" type="text" id="dev-tit" placeholder="Title">
             <br>
               <sl-button onclick="createPost();" variant="primary" id="dev-post">Post</sl-button>  
-        </div>
+            <br><br>
+            <sl-button onclick="pubUpdate()" variant="success">Publish site update</sl-button>
+            </div>
         <div class="cont" id="cont-home">
           <h1 style="color: red;">[SITE UNDER MAINTENANCE]</h1>
         <h3 style="color: red;">(getting netlify backend working)</h3>
@@ -109,8 +111,17 @@
             </legend>
             <p style="font-size: x-large;margin-bottom: 0;">Hi im a <b id="_age">16</b> year old programmer, I enjoy frontend and backend web development, making games, VR, AI, and Linux!. </p>
               <br>
-              <p style="font-size: large;">Have a look around, use the nav bar at the bottom change pages.</p>
-          </fieldset>
+              <p style="font-size: large;margin-bottom: 0;">Have a look around, use the nav bar at the bottom change pages.</p>
+            <br>
+              <fieldset id="stats">
+                <legend>
+                  <h2>Site Statistics</h2>
+                </legend>
+                <div id="_stats">
+                  <sl-spinner style="font-size: 50px; --track-width: 10px;"></sl-spinner>
+                </div>
+              </fieldset> 
+            </fieldset>
       </sl-animation>
       </div>
       <div class="cont" id="cont-blog">
@@ -460,8 +471,7 @@
       theme: 'snow', // or 'bubble'
     });
 
-
-
+    playAudioOnInteraction();
     </script>
   </body>
 </html>
