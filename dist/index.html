@@ -26,7 +26,7 @@
     <script type="module" src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.12.0/cdn/shoelace-autoloader.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/quill@2.0.1/dist/quill.js"></script>
-    <sl-animation style="display: none;" name="backInDown" easing="ease-out" duration="1500" iterations="1" play>
+    <sl-animation id="splash" style="display: none;" name="backInDown" easing="ease-out" duration="1500" iterations="1" play>
       <div class="tilt">
         <div id="status" class="pop">Now with backend! </div>
         <!-- I had to use "&nbsp;" instead of a simple space because the CSS will put a part of it on a separate line -->
@@ -104,7 +104,7 @@
         <!--
             <div onmouseleave="enableScroll()" onmousewheel="scrollContent(this);" class="items" id="home-lat"  style="width: 90%;"><div class="rect glass">test</div><div class="rect glass"></div><div class="rect glass"></div><div class="rect glass">See all...</div></div>
               -->
-        <sl-animation class="playonload" name="bounce" easing="ease-out" delay="1000" duration="2000" iterations="1" play>
+        <sl-animation id="welcome-anim" class="playonload" name="bounce" easing="ease-out" delay="1000" duration="2000" iterations="1">
           <fieldset id="welcome" class="glass">
             <legend>
               <h2 style="margin: 0;">Welcome!</h2>
@@ -417,24 +417,26 @@
     <script src="res/nav.js"></script>
     <script defer>
      
-      setTimeout(() => {
-        $("#startup-anims").children().show()
-        $(".tilt").parent().show();
-      }, 750);
-
+      
       $("#_age").html(calculateAge("2008-03-10"));
-        setTimeout(function() {
-            $("#fadeout").css("opacity","0")
-        setTimeout(function(){
-          $("#fadeout").hide()
-        },2500)
-        // getBlog();
-        // getProjects();
-      }, 1000);
+      
+      // setTimeout(() => {
+      //   $("#startup-anims").children().show()
+      //   $(".tilt").parent().show();
+      // }, 750);
+      
+      //   setTimeout(function() {
+      //       $("#fadeout").css("opacity","0")
+      //   setTimeout(function(){
+      //     $("#fadeout").hide()
+      //   },2500)
+      //   // getBlog();
+      //   // getProjects();
+      // }, 1000);
 
-      setTimeout(() => {
-        new Audio('res/assets/startup.mp3').play();
-      }, 2000);
+      // setTimeout(() => {
+      //   new Audio('res/assets/startup.mp3').play();
+      // }, 2000);
 
       $(window).on("resize", function() {
         resizeItems();
@@ -472,6 +474,7 @@
     });
 
     playAudioOnInteraction();
+   
     </script>
   </body>
 </html>

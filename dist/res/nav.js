@@ -587,6 +587,33 @@ function daysSince(dateString) {
     return daysDifference;
 }
 
+
+function startUp() {
+    $("#tnav sl-animation")[0].play = true;
+    $("#tnav sl-animation")[1].play = true;
+    $("#splash")[0].play = true;
+    $("#welcome-anim")[0].play = true;
+
+    setTimeout(() => {
+        $("#startup-anims").children().show()
+        $(".tilt").parent().show();
+      }, 750);
+      
+        setTimeout(function() {
+            $("#fadeout").css("opacity","0")
+        setTimeout(function(){
+          $("#fadeout").hide()
+        },2500)
+        // getBlog();
+        // getProjects();
+      }, 1000);
+
+      setTimeout(() => {
+        new Audio('res/assets/startup.mp3').play();
+      }, 2000);
+}
+
+
 function playAudioOnInteraction() {
     const audio = new Audio('res/assets/music.mp3');
     audio.volume = 0.1;
@@ -596,6 +623,7 @@ function playAudioOnInteraction() {
         audio.play();
         document.removeEventListener('click', playAudio);
         document.removeEventListener('keydown', playAudio);
+        startUp();
         setTimeout(function(){
             new Audio('res/assets/begin.mp3').play();
         },100);
