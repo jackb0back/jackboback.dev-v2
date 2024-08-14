@@ -29,6 +29,48 @@ var splash_text = [
     "New and improved",
     "Chattttt"
 ];
+var socials = {
+    "discord": {
+        "desc": "My discord",
+        "url": "",
+        "handel": "@jackboback"
+    },
+    "github": {
+        "desc": "My github account",
+        "url": "https://github.com/jackb0back",
+        "handel": "@jackb0back"
+    },
+    "mail": {
+        "desc": "My Gmail",
+        "url": "",
+        "handel": "jshouse310@gmail.com"
+    },
+    "youtube": {
+        "desc": "My youtube channel",
+        "url": "https://www.youtube.com/channel/UCvy42JSJSiZiou-WXAIOF9A",
+        "handel": "Jackboback"
+    },
+    "scratch": {
+        "desc": "My scratch account",
+        "url": "https://scratch.mit.edu/users/jackboback/",
+        "handel": "@jackboback"
+    },
+    "itch": {
+        "desc": "My itch.io account",
+        "url": "https://jackboback.itch.io/",
+        "handel": "@jackboback"
+    },
+    "reddit": {
+        "desc": "My reddit account",
+        "url": "https://www.reddit.com/user/jackboback/",
+        "handel": "@jackboback"
+    },
+    "tiktok": {
+        "desc": "My tiktok account",
+        "url": "https://www.tiktok.com/@jackboback32",
+        "handel": "@Jackboback32"
+    },
+}
 var blur_intervalTimer = null;
 var blur_timeoutTimer = null;
 $("#status").html(splash_text[Math.floor(Math.random()*splash_text.length)])
@@ -73,7 +115,7 @@ function hideCont() {
     }
 }
 
-function showCont(nav) {
+function showCont(nav,anim) {
     hideCont();
     navs[nav].style.display = "block";
     currentNav = nav;
@@ -81,11 +123,65 @@ function showCont(nav) {
         top: 0,
         behavior: 'smooth'
     });
+
+    if (anim == false) {
+        return;
+    }
+    for (let i = 0; i < $(navs[currentNav]).find("sl-animation").length; i++) {
+        if ($(navs[currentNav]).find("sl-animation")[i].classList.contains('playonload')) {
+            var og_delay = $(navs[currentNav]).find("sl-animation")[0].delay;
+            $(navs[currentNav]).find("sl-animation")[i].delay = 700;
+            $(navs[currentNav]).find("sl-animation")[i].play = true;
+            setTimeout(() => {
+                $(navs[currentNav]).find("sl-animation")[i].delay = 0;
+            }, 800);
+        }else if ($(navs[currentNav]).find("sl-animation")[i].parentElement.classList.contains("playonload")) {
+            for (let b = 0; b < $($(navs[currentNav]).find("sl-animation")[i].parentElement).children("sl-animation").length; b++) {
+                var og_delay = $($(navs[currentNav]).find("sl-animation")[i].parentElement).children("sl-animation")[b].delay;
+                $($(navs[currentNav]).find("sl-animation")[i].parentElement).children("sl-animation")[b].delay = 700;
+                $($(navs[currentNav]).find("sl-animation")[i].parentElement).children("sl-animation")[b].play = true;
+                setTimeout(() => {
+                    $($(navs[currentNav]).find("sl-animation")[i].parentElement).children("sl-animation")[b].delay = 0;
+                },800)
+            }
+        }
+    }
 }
+
+function resizeItems() {
+    $("#about-me").width("calc(100% - " + $("#about-side").width() + "px - 35px)")
+    $("#socials").css("margin-top","calc("+$("#langs").height()+"px + 10% + 20px)")
+}
+
 
 function delay(time) {
     return new Promise(resolve => setTimeout(resolve, time));
 }
+
+function newSocialPopup(social) {
+    if (socials[social] !== undefined) {
+        var soc = socials[social];
+        var _url = "";
+        var _hand = "";
+        if (soc.url !== "") {
+            _url = `<a href="javascript:window.open('${soc.url}')">${soc.url}</a>`
+        }
+        if (soc.handel !== "") {
+            _hand = `<b>${soc.handel}</b>`
+        }
+        $("#popups")[0].innerHTML += `
+            <sl-dialog label="${soc.desc}">
+                <p class="social-desc">
+                    ${soc.desc}: ${_hand} <br><br> ${_url}
+                </p>
+            </sl-dialog>
+        `
+        setTimeout(function() {
+            $("sl-dialog")[$("sl-dialog").length - 1].show();
+        },250)
+    }
+}
+
 
 async function tick(callLoop) {
     while (true) {
@@ -275,6 +371,6 @@ function calculateAge(startDate) {
 
 
 
-//showCont("cont-contact");
-showCont("cont-home");
+// showCont("cont-contact");
+showCont("cont-home",false);
 // tick();

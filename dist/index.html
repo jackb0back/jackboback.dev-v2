@@ -16,22 +16,27 @@
     <script src="https://cdn.jsdelivr.net/gh/nextapps-de/winbox@master/dist/winbox.bundle.min.js"></script>
     <script type="module" src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.12.0/cdn/shoelace-autoloader.js"></script>
     
-    <div id="fadeout"></div>
-    
-    <div id="tnav" class="glass">
-      <sl-animation name="backInLeft" easing="ease-out" delay="200" duration="2000" iterations="1" play>
-          <h1 style="display: inline-block;letter-spacing: -5px" class="rainbow Mars">Jackboback . dev</h1>
-      </sl-animation>
+    <sl-animation style="display: none;" name="backInDown" easing="ease-out" duration="1500" iterations="1" play>
+      <div class="tilt">
+        <div id="status" class="pop">Now with backend! </div>
+        <!-- I had to use "&nbsp;" instead of a simple space because the CSS will put a part of it on a separate line -->
+        </div>
+    </sl-animation> 
 
-      <sl-animation name="backInRight" easing="ease-out" delay="200" duration="2000" iterations="1" play>
+
+    <div id="fadeout"></div>
+    <!-- <div class="scanlines crt"></div> -->
+    <div id="tnav" class="glass">
+      <div id="startup-anims">
+        <sl-animation style="display: none;" name="backInLeft" easing="ease-out" delay="200" duration="2000" iterations="1" play>
+          <h1 style="display: inline-block;letter-spacing: -5px" class="rainbow Mars">Jackboback . dev</h1>
+        </sl-animation>
+        
+        <sl-animation style="display: none;" name="backInRight" easing="ease-out" delay="200" duration="2000" iterations="1" play>
           <h3 style="display: inline-block;">v2.5</h3>
-      </sl-animation>
-      <sl-animation name="backInDown" easing="ease-out" duration="1500" iterations="1" play>
-          <div class="tilt">
-            <div id="status" class="pop">Now with backend! </div>
-            <!-- I had to use "&nbsp;" instead of a simple space because the CSS will put a part of it on a separate line -->
-          </div>
-      </sl-animation> 
+        </sl-animation>
+        </div>
+     
     </div>
     <div class="header">
       <div id="snow"></div>
@@ -67,6 +72,7 @@
       <!--Waves end-->
     </div>
     <!--Header ends-->
+    <!-- <sl-animation name="tada" easing="ease-out" delay="1000" duration="2000" iterations="1" play> -->
     <div id="main-content">
       <div class="cont" id="cont-home">
         <h1 style="color: red;">[SITE UNDER MAINTENANCE]</h1>
@@ -75,12 +81,14 @@
         <!--
             <div onmouseleave="enableScroll()" onmousewheel="scrollContent(this);" class="items" id="home-lat"  style="width: 90%;"><div class="rect glass">test</div><div class="rect glass"></div><div class="rect glass"></div><div class="rect glass">See all...</div></div>
               -->
-        <sl-animation name="bounce" easing="ease-out" delay="1000" duration="2000" iterations="1" play>
+        <sl-animation class="playonload" name="bounce" easing="ease-out" delay="1000" duration="2000" iterations="1" play>
           <fieldset id="welcome" class="glass">
             <legend>
               <h2 style="margin: 0;">Welcome!</h2>
             </legend>
-            <p>Hi im a <b id="_age">16</b> year old front end web developer and game dev, I like VR, AR and linux!
+            <p style="font-size: x-large;margin-bottom: 0;">Hi im a <b id="_age">16</b> year old programmer, I enjoy frontend and backend web development, making games, VR, AI, and Linux!. </p>
+              <br>
+              <p style="font-size: large;">Have a look around, use the nav bar at the bottom change pages.</p>
           </fieldset>
       </sl-animation>
       </div>
@@ -212,10 +220,10 @@
 
       <div class="cont" id="cont-contact">
 
-        <h1>About me</h1>
+        <!-- <h1>About me</h1> -->
 
-        <div id="about-me">
-            about here
+        <div id="about-me" class="glass">
+            <h2>About me</h2>
         </div>
 
         <div id="about-side">
@@ -223,13 +231,13 @@
               <sl-animation name="flip" easing="ease-out" duration="2000" iterations="1">
                  <img onclick="this.parentElement.play = true" src="res/assets/new-icon.png" id="about-pfp" alt="">
               </sl-animation>
-              <h3 class="center" style="margin: 4px;">Contact me on discord</h3>
-              <b style="color: #818cff;margin: 4px;" class="pp">@jackboback</b> 
+              <h3 class="center scale-text" style="margin: 4px;">Contact me on discord</h3>
+              <b style="color: #818cff;margin: 4px;" class="pp scale-text">@jackboback</b> 
           </div>
 
 
-              <div class="glass" id="langs">
-                <h4 style="margin: 0;">Langauages</h4>
+              <div class="glass playonload" id="langs">
+                <h4 style="margin: 0;" class="scale-text">Langauages</h4>
                
                   <sl-animation name="rubberBand" duration="1000" iterations="1">
                       <img class="lang" onmouseenter="this.parentElement.play = true" onclick="this.parentElement.play = true" src="https://static-00.iconduck.com/assets.00/js-icon-2048x2048-kbwt89q3.png" alt="langauge">
@@ -252,17 +260,39 @@
                   </sl-animation> 
             
               </div>
+              
+              <div class="glass playonload" id="socials">
+                  <h4 style="margin: 0;" class="scale-text">Socials</h4>
+                  <sl-animation name="rubberBand" duration="1000" iterations="1">
+                      <img onclick="newSocialPopup('discord')" onmouseenter="this.parentElement.play = true" class="social" src="res/assets/discord.png" alt="social">
+                  </sl-animation>
+                  <sl-animation name="rubberBand" duration="1000" iterations="1">
+                      <img onclick="newSocialPopup('github')" onmouseenter="this.parentElement.play = true" class="social" src="res/assets/github.png" alt="social">
+                  </sl-animation>
+                  <sl-animation name="rubberBand" duration="1000" iterations="1">
+                      <img onclick="newSocialPopup('mail')" onmouseenter="this.parentElement.play = true" class="social" src="res/assets/gmail.png" alt="social">
+                  </sl-animation>
+                  <sl-animation name="rubberBand" duration="1000" iterations="1">
+                      <img onclick="newSocialPopup('youtube')" onmouseenter="this.parentElement.play = true" class="social" src="res/assets/youtube.png" alt="social">
+                  </sl-animation>
+                  <sl-animation name="rubberBand" duration="1000" iterations="1">
+                      <img onclick="newSocialPopup('scratch')" onmouseenter="this.parentElement.play = true" class="social" src="res/assets/scratch.png" alt="social">
+                  </sl-animation>
+                  <sl-animation name="rubberBand" duration="1000" iterations="1">
+                      <img onclick="newSocialPopup('itch')" onmouseenter="this.parentElement.play = true" class="social" src="res/assets/itch.png" alt="social">
+                  </sl-animation>
+                  <sl-animation name="rubberBand" duration="1000" iterations="1">
+                      <img onclick="newSocialPopup('reddit')" onmouseenter="this.parentElement.play = true" class="social" src="res/assets/reddit.png" alt="social">
+                  </sl-animation>
+                  <sl-animation name="rubberBand" duration="1000" iterations="1">
+                      <img onclick="newSocialPopup('tiktok')" onmouseenter="this.parentElement.play = true" class="social" src="res/assets/tiktok.png" alt="social">
+                  </sl-animation>
+              </div>
           </div>
 
 
 
 
-
-        <div id="socials">
-          <sl-animation name="rubberBand" duration="1000" iterations="1">
-            <img onmouseenter="this.parentElement.play = true" class="social" src="res/assets/discord.png" alt="social">
-          </sl-animation>
-        </div>
 
 <!-- 
         <h1>Contact</h1>
@@ -302,6 +332,9 @@
             <a href="https://www.reddit.com/user/jackboback/">jackboback</a>
           </h3>
         </div>
+
+
+        https://jackboback.itch.io/
          -->
       </div>
 
@@ -309,6 +342,7 @@
 
 
     </div>
+    <!-- </sl-animation> -->
     <div class="glass" id="navBar">
       <sl-tooltip class="sl-theme-dark" content="Home">
         <img onclick="showCont('cont-home')" class="icon" src="https://cdn.jsdelivr.net/gh/jackb0back/streamingAssets@main/OASISX/home.png" alt="">
@@ -320,7 +354,7 @@
         <img onclick="showCont('cont-projects')" class="icon" src="res/assets/code.png" alt="">
       </sl-tooltip>
       <sl-tooltip class="sl-theme-dark" content="About">
-        <img onclick="showCont('cont-contact')" class="icon" src="res/assets/new-icon.png" alt="">
+        <img onclick="showCont('cont-contact');resizeItems()" class="icon" src="res/assets/new-icon.png" alt="">
       </sl-tooltip>
     </div>
     <template id="template-project">
@@ -337,6 +371,9 @@
         </div>
       </div>
     </template>
+
+    <div id="popups"></div>
+
     <style>
       body {
         background-color: black;
@@ -348,9 +385,15 @@
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2353081821924753" crossorigin="anonymous"></script>
     <script src="res/nav.js"></script>
     <script defer>
+     
+      setTimeout(() => {
+        $("#startup-anims").children().show()
+        $(".tilt").parent().show();
+      }, 750);
+
       $("#_age").html(calculateAge("2008-03-10"));
-      setTimeout(function() {
-        $("#fadeout").css("opacity","0")
+        setTimeout(function() {
+            $("#fadeout").css("opacity","0")
         setTimeout(function(){
           $("#fadeout").hide()
         },2500)
@@ -362,7 +405,14 @@
         new Audio('res/assets/startup.mp3').play();
       }, 2000);
 
-     
+      $(window).on("resize", function() {
+        resizeItems();
+      });
+ 
+      setTimeout(function(){
+        resizeItems();
+      },100)
+
     </script>
   </body>
 </html>
