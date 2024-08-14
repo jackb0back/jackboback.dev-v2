@@ -670,10 +670,37 @@ body {
 
 
 
+.ql-snow * {
+	font-size: large;
+}
 
-
-
-
+#editor,.ql-toolbar  {
+    background-color: #333;
+    color: var(--color) !important;
+}
+.ql-toolbar svg {
+    filter: invert(1);
+    filter: brightness(100);
+}
+.ql-snow .ql-picker {
+    color: var(--color) !important;
+    background-color: #333 !important; 
+}
+.ql-toolbar.ql-snow .ql-picker.ql-expanded .ql-picker-options{
+    background-color: #333;
+}
+.ql-editor.ql-blank::before {
+    color: white !important;
+}
+#editor {
+    min-height: 200px;
+}
+#board-autofill {
+    margin-bottom: 10px;
+}
+.ql-toolbar {
+    text-align: left;
+}
 
 
 

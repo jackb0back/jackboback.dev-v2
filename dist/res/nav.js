@@ -335,18 +335,19 @@ function getProjects() {
             console.log(data);
             displayProjects();
         })
-
-
 }
 
 
 function getBlog() {
-    getAllCells("C", "blog", dat => {
-        fetchedData.blog = parseB64Dat(fetchedData.blog);
-        fetchedData.blog.shift();
+    fetch(window.location.href +api_route + "/blog", {
+        method: 'GET'
+    })
+    .then(res => res.json())
+    .then(dat => {
+        fetchedData.blog = dat;
         fetchedData.blog.reverse();
         console.log(fetchedData.blog);
-        displayBlog();
+        // displayBlog();
     })
 }
 
@@ -368,9 +369,77 @@ function calculateAge(startDate) {
 }
 //calculateAge("yyyy-mm-dd")
 
+function formatDateToMMDDYYYY(date) {
+    // Ensure the input is a valid Date object
+    if (!(date instanceof Date) || isNaN(date)) {
+      throw new Error("Invalid date");
+    }
+  
+    // Extract the day, month, and year from the date object
+    const day = date.getDate();
+    const month = date.getMonth() + 1; // Months are zero-based
+    const year = date.getFullYear();
+  
+    // Format the day and month to ensure two digits (e.g., "01", "09")
+    const formattedDay = day < 10 ? `0${day}` : day;
+    const formattedMonth = month < 10 ? `0${month}` : month;
+  
+    // Construct the formatted date string
+    return `${formattedMonth}/${formattedDay}/${year}`;
+}
+
+
+function createPost() {
+    var token = $("#dev-token").val();
+    var title = $("#dev-tit").val();
+    var cont = quill.getSemanticHTML();
+    if (token !== "") {
+        if (title !== "") {
+            $("#dev-post")[0].disabled = true;
+            var res = {
+                "title": title,
+                "cont": btoa(cont),
+                "date": formatDateToMMDDYYYY(new Date())
+            }
+
+            const options = {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json', 'User-Agent': 'insomnia/9.3.3'},
+                body: JSON.stringify({
+                    "action":"addBlog",
+                    "key": token,
+                    "data": res
+                })
+              };
+              
+              fetch('http://localhost:8888/.netlify/functions/api/', options)
+                .then(response => response.text())
+                .then(response => {
+                   console.log(response);
+                   alert("added blog post.");
+                })
+                .catch(err => console.error(err));
+
+        }else {            
+            alert("title required");
+        }
+    }else {
+        alert("Token required");
+    }
+}
 
 
 
-// showCont("cont-contact");
+function handleKeyPress(event) {
+    if (event.key == "~") {
+        showCont("cont-dev");
+    }
+}
+
+
+
+
+document.addEventListener('keydown', handleKeyPress);
+// showCont("cont-dev");
 showCont("cont-home",false);
 // tick();
