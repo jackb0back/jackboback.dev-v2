@@ -348,7 +348,7 @@ function displayProjects() {
 }
 
 function getProjects() {
-    fetch(window.location.href +api_route + "/projects", {
+    fetch(window.origin + "/" + api_route + "/projects", {
             method: 'GET'
         })
         .then(res => res.json())
@@ -361,7 +361,7 @@ function getProjects() {
 
 
 function getBlog() {
-    fetch(window.location.href +api_route + "/blog", {
+    fetch(window.origin + "/" + api_route + "/blog", {
         method: 'GET'
     })
     .then(res => res.json())
