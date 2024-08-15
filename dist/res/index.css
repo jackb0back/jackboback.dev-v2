@@ -84,7 +84,10 @@ a {
 	text-align: left;
 	margin-bottom: 10px;
 }
-
+#about-me fieldset p  {
+	text-indent: 35px;
+	margin: 0;
+}
 #about-me {
 	position: relative;
 	margin-left: 10px;
@@ -217,7 +220,14 @@ body {
 	transition: all 2s ease;
 	pointer-events: none;
 }
-
+#fadeout h1 {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%,-50%);
+	font-size: 10vw;
+	margin: 0;
+}
 
 #main-content {
 	margin-top: 80px;

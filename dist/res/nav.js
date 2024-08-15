@@ -1,9 +1,11 @@
+
 var navs = document.getElementsByClassName("cont");
 var home = "cont-home";
 var currentNav = home;
 for (let i = 0; i < navs.length; i++) {
     navs[i].style.display = "none";
 }
+var loaded = false;
 var api_route = ".netlify/functions/api"
 var title = document.title;
 var blurMessage = [{
@@ -126,26 +128,29 @@ function showCont(nav,anim) {
         top: 0,
         behavior: 'smooth'
     });
-
+    var dl = 700;
     if (anim == false) {
         return;
+    }
+    if (anim !== undefined) {
+        dl = anim;
     }
     for (let i = 0; i < $(navs[currentNav]).find("sl-animation").length; i++) {
         if ($(navs[currentNav]).find("sl-animation")[i].classList.contains('playonload')) {
             var og_delay = $(navs[currentNav]).find("sl-animation")[0].delay;
-            $(navs[currentNav]).find("sl-animation")[i].delay = 700;
+            $(navs[currentNav]).find("sl-animation")[i].delay = dl;
             $(navs[currentNav]).find("sl-animation")[i].play = true;
             setTimeout(() => {
                 $(navs[currentNav]).find("sl-animation")[i].delay = 0;
-            }, 700);
+            }, dl);
         }else if ($(navs[currentNav]).find("sl-animation")[i].parentElement.classList.contains("playonload")) {
             for (let b = 0; b < $($(navs[currentNav]).find("sl-animation")[i].parentElement).children("sl-animation").length; b++) {
                 var og_delay = $($(navs[currentNav]).find("sl-animation")[i].parentElement).children("sl-animation")[b].delay;
-                $($(navs[currentNav]).find("sl-animation")[i].parentElement).children("sl-animation")[b].delay = 700;
+                $($(navs[currentNav]).find("sl-animation")[i].parentElement).children("sl-animation")[b].delay = dl;
                 $($(navs[currentNav]).find("sl-animation")[i].parentElement).children("sl-animation")[b].play = true;
                 setTimeout(() => {
                     $($(navs[currentNav]).find("sl-animation")[i].parentElement).children("sl-animation")[b].delay = 0;
-                },700)
+                },dl)
             }
         }
     }
@@ -399,6 +404,7 @@ function createPost() {
     if (token !== "") {
         if (title !== "") {
             $("#dev-post")[0].disabled = true;
+            updateCell("E2",formatDateToMMDDYYYY(new Date()),token);
             var res = {
                 "title": title,
                 "cont": btoa(cont),
@@ -590,6 +596,8 @@ function daysSince(dateString) {
 
 
 function startUp() {
+    loaded = true;
+    $("#welcome-anim")[0].play = true;
     $("#tnav sl-animation")[0].play = true;
     $("#tnav sl-animation")[1].play = true;
     $("#splash")[0].play = true;
@@ -601,6 +609,7 @@ function startUp() {
       }, 750);
       
         setTimeout(function() {
+            $("#welcome-anim").show();
             $("#fadeout").css("opacity","0")
         setTimeout(function(){
           $("#fadeout").hide()
@@ -644,3 +653,10 @@ setTimeout(async function(){
 // showCont("cont-contact");
 showCont("cont-home",false);
 // tick();
+
+
+setTimeout(function(){
+    if (!loaded) {
+        $("#fadeout").html("<h1>Click the page bozo</h1>");
+    }
+},5000)

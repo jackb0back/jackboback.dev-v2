@@ -104,7 +104,7 @@
         <!--
             <div onmouseleave="enableScroll()" onmousewheel="scrollContent(this);" class="items" id="home-lat"  style="width: 90%;"><div class="rect glass">test</div><div class="rect glass"></div><div class="rect glass"></div><div class="rect glass">See all...</div></div>
               -->
-        <sl-animation id="welcome-anim" class="playonload" name="tada" easing="ease-out" delay="1000" duration="2000" iterations="1">
+        <sl-animation itemid="welcome-anim" style="display: none;" id="welcome-anim" class="playonload" name="jackInTheBox" easing="ease-in-out" delay="1000" duration="1600" iterations="1">
           <fieldset id="welcome" class="glass">
             <legend>
               <h2 style="margin: 0;">Welcome!</h2>
@@ -259,13 +259,25 @@
               <legend>
                   <h2 style="margin: 5px;">About me</h2>
               </legend>
+              <p>
               My name is Jackson and I'm a highschool student who's interested in computer programming and graphic design, and this is my website which was registered in 2022.  
+            </p>
           </fieldset>
           <fieldset>
             <legend>
               <h2 style="margin: 5px;">A Timeline</h2>
             </legend>
-            I've been coding since 6th grade when I was 12, and even before that I used to make games on the popular kids programming language <a href="javascript:window.open('https://scratch.mit.edu/')">scratch</a>. I didn't start using O.O.P (Object Oriented Programming language) till 6th grade when I started learning Javascript, My first projects consisted solely of Javascript bookmarklets which where snippets of code that could be ran by clicking on a bookmark, one of most memorable was called “Super Client” a draggable GUI that had a list of controls where a user would press a key and it would run another bookmarklet. It was very inefficient and was very buggy but, I would say it was what started my programming journey. Over the years I would work on several iterations of Super Client till I eventually got into web development where I started learning HTML and bits of CSS, my first websites looked horrible they consisted of brightly colored shapes and the default text one of these was called <a href="javascript:window.open('https://8xx0z.csb.app/')">Weblet Launcher</a>, an unblocked games website I made so that me and my friends could play unblocked games during school, it sucked, but it worked. Shortly after I re-branded it to <a href="javascript:window.open('https://oyzqh.csb.app/')">OASIS</a> based on my favorite movie: “Ready Player One”, The website went over a few iterations but a while ago I updated it because there were a lot of people that still used it even though my school had long blocked it. After my school blocked OASIS I worked on a new version: “OASIS Offline” which did not have a website and was instead a folder of HTML files that could be ran as a website, It was a hit lots of people at my school would use it but it only came to a close when my school forced my to delete it as I had decided to host the download on my SCHOOL GOOGLE DRIVE which was not a smart move, i'm sure there's a few copies floating around somewhere but I don't feel like looking for one. OASIS Offline was the seed for multiple other OASIS projects usually with a similar concept, many of which were not released/finished. That brings us to today, our (somewhat) latest project <a href="javascript:window.open('http://oasis--x.rf.gd/?i=1')">OASIS X</a> that me and my friend <a href="javascript:window.open('https://jerrycodes.org/')">Oliver</a> worked on together. It had a lot of work put into it but flopped as it was released unfinished and has a lot of missing features and bugs. More recently I've been working on another which (hopefully) should outperform the last.
+            <p>
+            I've been coding since 6th grade when I was 12, and even before that I used to make games on the popular kids programming language <a href="javascript:window.open('https://scratch.mit.edu/')">scratch</a>.
+            <br>  I didn't start using O.O.P (Object Oriented Programming language) till 6th grade when I started learning Javascript, My first projects consisted solely of Javascript bookmarklets which where snippets of code that could be ran by clicking on a bookmark, one of most memorable was called “Super Client” a draggable GUI that had a list of controls where a user would press a key and it would run another bookmarklet. It was very inefficient and was very buggy but, I would say it was what started my programming journey.
+            <br>   Over the years I would work on several iterations of Super Client till I eventually got into web development where I started learning HTML and bits of CSS, my first websites looked horrible they consisted of brightly colored shapes and the default text one of these was called <a href="javascript:window.open('https://8xx0z.csb.app/')">Weblet Launcher</a>, an unblocked games website I made so that me and my friends could play unblocked games during school, it sucked, but it worked. 
+            </p><br>
+            <p> Shortly after I re-branded it to <a href="javascript:window.open('https://oyzqh.csb.app/')">OASIS</a> based on my favorite movie: “Ready Player One”, The website went over a few iterations but a while ago I updated it because there were a lot of people that still used it even though my school had long blocked it. After my school blocked OASIS I worked on a new version: “OASIS Offline” which did not have a website and was instead a folder of HTML files that could be ran as a website, It was a hit lots of people at my school would use it but it only came to a close when my school forced my to delete it as I had decided to host the download on my SCHOOL GOOGLE DRIVE which was not a smart move, i'm sure there's a few copies floating around somewhere but I don't feel like looking for one.
+            </p>
+              <br>
+            <p>
+              OASIS Offline was the seed for multiple other OASIS projects usually with a similar concept, many of which were not released/finished. That brings us to today, our (somewhat) latest project <a href="javascript:window.open('http://oasis--x.rf.gd/?i=1')">OASIS X</a> that me and my friend <a href="javascript:window.open('https://jerrycodes.org/')">Oliver</a> worked on together. It had a lot of work put into it but flopped as it was released unfinished and has a lot of missing features and bugs. More recently I've been working on another which (hopefully) should outperform the last.
+          </p>
           </fieldset>
         </div>
 
@@ -388,7 +400,7 @@
     <!-- </sl-animation> -->
     <div class="glass" id="navBar">
       <sl-tooltip class="sl-theme-dark" content="Home">
-        <img onclick="showCont('cont-home')" class="icon" src="https://cdn.jsdelivr.net/gh/jackb0back/streamingAssets@main/OASISX/home.png" alt="">
+        <img onclick="showCont('cont-home',1)" class="icon" src="https://cdn.jsdelivr.net/gh/jackb0back/streamingAssets@main/OASISX/home.png" alt="">
       </sl-tooltip>
       <sl-tooltip class="sl-theme-dark" content="Blog">
         <img onclick="showCont('cont-blog')" class="icon" src="res/assets/blog.png" alt="">
