@@ -118,6 +118,7 @@ function hideCont() {
 }
 
 function showCont(nav,anim) {
+    console.log("test")
     hideCont();
     navs[nav].style.display = "block";
     currentNav = nav;
@@ -136,7 +137,7 @@ function showCont(nav,anim) {
             $(navs[currentNav]).find("sl-animation")[i].play = true;
             setTimeout(() => {
                 $(navs[currentNav]).find("sl-animation")[i].delay = 0;
-            }, 800);
+            }, 700);
         }else if ($(navs[currentNav]).find("sl-animation")[i].parentElement.classList.contains("playonload")) {
             for (let b = 0; b < $($(navs[currentNav]).find("sl-animation")[i].parentElement).children("sl-animation").length; b++) {
                 var og_delay = $($(navs[currentNav]).find("sl-animation")[i].parentElement).children("sl-animation")[b].delay;
@@ -144,7 +145,7 @@ function showCont(nav,anim) {
                 $($(navs[currentNav]).find("sl-animation")[i].parentElement).children("sl-animation")[b].play = true;
                 setTimeout(() => {
                     $($(navs[currentNav]).find("sl-animation")[i].parentElement).children("sl-animation")[b].delay = 0;
-                },800)
+                },700)
             }
         }
     }
@@ -610,7 +611,7 @@ function startUp() {
 
       setTimeout(() => {
         new Audio('res/assets/startup.mp3').play();
-      }, 2000);
+      }, 1500);
 }
 
 
@@ -636,12 +637,10 @@ function playAudioOnInteraction() {
 
 
 document.addEventListener('keydown', handleKeyPress);
-sendAnalytics();
-getAnalytics();
 setTimeout(async function(){
     await sendAnalytics();
     getAnalytics(); 
 },100)
-// showCont("cont-dev");
+// showCont("cont-contact");
 showCont("cont-home",false);
 // tick();

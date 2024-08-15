@@ -24,6 +24,8 @@ a {
 	font-size: clamp(5px, 3vw, 15px);
 }
 
+
+
 #about-side {
 	position: absolute;
     right: 0;
@@ -73,12 +75,23 @@ a {
 	padding-bottom: 20px;	
 }
 
+#about-me fieldset {
+	width: 80%;
+	border-radius: 10px;
+	position: relative;
+	left: 50%;
+	transform: translateX(-50%);
+	text-align: left;
+	margin-bottom: 10px;
+}
+
 #about-me {
 	position: relative;
 	margin-left: 10px;
 	width: 100%;
 	height: 85%;
 	margin-top: 10px;
+	overflow-y: auto;
 }
 
 #about-contact {
@@ -551,6 +564,7 @@ body {
 }
 .stat:hover {
 	scale: 1.05;
+	margin: 12px;
 	margin-top: 10px;
 	margin-bottom: 10px;
 }
