@@ -77,7 +77,16 @@ var GAS_url = "https://script.google.com/macros/s/AKfycbwpmWZa7t6SVVTtTaaCB5s_eh
 var blur_intervalTimer = null;
 var blur_timeoutTimer = null;
 var analytics = [];
+var hash = window.location.hash;
+var startPage = "cont-home";
 $("#status").html(splash_text[Math.floor(Math.random()*splash_text.length)])
+
+
+if (hash == "#about") {
+    startPage = "cont-contact"
+}else if (hash.includes("#")) {
+    startPage = "cont-" + hash.replace("#","");
+}
 
 
 // window.addEventListener("blur", function() {
@@ -120,7 +129,12 @@ function hideCont() {
 }
 
 function showCont(nav,anim) {
-    console.log("test")
+    var gg = nav.split("-")
+    gg.shift();
+    if (gg == "contact") {
+        gg = "about";
+    }
+    window.location.hash = gg;
     hideCont();
     navs[nav].style.display = "block";
     currentNav = nav;
@@ -606,6 +620,7 @@ function startUp() {
     setTimeout(() => {
         $("#startup-anims").children().show()
         $(".tilt").parent().show();
+        $("#about-pfp").parent()[0].play = true
       }, 750);
       
         setTimeout(function() {
@@ -651,9 +666,9 @@ setTimeout(async function(){
     getAnalytics(); 
 },100)
 // showCont("cont-contact");
-showCont("cont-home",false);
+//showCont("cont-home",false);
 // tick();
-
+showCont(startPage,false);
 
 setTimeout(function(){
     if (!loaded) {
