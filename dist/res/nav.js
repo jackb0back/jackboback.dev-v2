@@ -71,7 +71,7 @@ var socials = {
         "handel": "@Jackboback32"
     },
 }
-var GAS_url = "https://script.google.com/macros/s/AKfycbx7Ux8dYKjv67ws6cMpohXVtYmU8LtBZmo2KrmuApTunWKQTjIo_gMsCElkozX1fnoUeA/exec";
+var GAS_url = "https://script.google.com/macros/s/AKfycbwpmWZa7t6SVVTtTaaCB5s_ehdbR_FVE0fSA7DqfpEnayP0P-G218kgu1POOe_9a_GPpw/exec";
 var blur_intervalTimer = null;
 var blur_timeoutTimer = null;
 var analytics = [];
