@@ -189,7 +189,7 @@ sl-details::part(content) {
 	text-align: left;
 }
 sl-details::part(summary) {
-    font-weight: bold;
+    /* font-weight: bold; */
     font-size: large;
     width: 20px;
     text-wrap: pretty;
@@ -250,13 +250,21 @@ sl-details::part(summary) {
 	bottom: -70px;
 }
 
+h1, h2, h3, h4, h5, h6 {
+	/*Monocraft*/
+	font-weight: normal;
+}
+
 body {
+	color: white;
+	text-align: center;
 	width: 100vw;
 	height: 100vh;
 	background: var(--background);
 	background-size: cover;
 	margin: 0;
 	overflow: hidden;
+	font-family: 'Monocraft';
 }
 
 #fadeout {

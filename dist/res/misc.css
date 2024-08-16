@@ -369,11 +369,6 @@ body.wb-lock .winbox {
 	background: 0 0;
 }
 
-body {
-	font-family: sans-serif;
-	color: white;
-	text-align: center;
-}
 
 @keyframes onload {
 	from {

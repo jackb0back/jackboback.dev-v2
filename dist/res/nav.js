@@ -26,14 +26,18 @@ var blurMessage = [{
         "icon": "res/assets/pfp_crazy.png"
     },
 ];
+var splash_bag = [];
+var splash_bag_item = 0;
 var splash_text = [
     "Now with backend!",
     "Where back!",
     "New and improved",
     "Chattttt",
     "All the stats",
-    `<a href="javascript:window.open('https://shoelace.style')">shoelace.style</a>`
+    `<a href="javascript:window.open('https://shoelace.style')">shoelace.style</a>`,
+    `check out <a href="javascript:window.open('https://jerrycodes.org/')">Jerry</a>`
 ];
+splash_bag = copyAndShuffleArray(splash_text);
 var socials = {
     "discord": {
         "desc": "My discord",
@@ -483,6 +487,7 @@ function createPost() {
                 .then(response => response.text())
                 .then(response => {
                    console.log(response);
+                   $("#dev-post")[0].disabled = false;
                    alert("added blog post.");
                 })
                 .catch(err => console.error(err));
@@ -682,6 +687,18 @@ function startUp() {
       }, 1500);
 }
 
+function copyAndShuffleArray(arr) {
+    // Copy the array
+    let copiedArray = arr.slice(); // or you can use [...arr]
+  
+    // Shuffle the copied array using Fisher-Yates algorithm
+    for (let i = copiedArray.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [copiedArray[i], copiedArray[j]] = [copiedArray[j], copiedArray[i]];
+    }
+  
+    return copiedArray;
+}
 
 function playAudioOnInteraction() {
     const audio = new Audio('res/assets/music.mp3');
@@ -689,6 +706,7 @@ function playAudioOnInteraction() {
     audio.loop = true;
     // Function to play the audio and remove the event listeners
     const playAudio = () => {
+        sendAnalytics();
         audio.play();
         document.removeEventListener('click', playAudio);
         document.removeEventListener('keydown', playAudio);
@@ -706,7 +724,6 @@ function playAudioOnInteraction() {
 
 document.addEventListener('keydown', handleKeyPress);
 setTimeout(async function(){
-    await sendAnalytics();
     getAnalytics(); 
 },100)
 // showCont("cont-contact");
@@ -721,11 +738,17 @@ setTimeout(function(){
 },5000)
 
 periodicallyRun(() => {
-    $("#status").css('opacity',0);
+    $("#status").css('opacity', 0);
     setTimeout(() => {
-        $("#status").html(splash_text[Math.floor(Math.random()*splash_text.length)]);
-        $("#splash")[0].play = true
-        $("#status").css('opacity',1);
+        var vv = splash_bag[splash_bag_item];
+        $("#status").html(vv);
+        splash_bag_item++;
+        if (splash_bag_item >= splash_text.length) {
+            splash_bag_item = 0;
+            splash_bag = copyAndShuffleArray(splash_text);
+        }
+        $("#splash")[0].play = true;
+        $("#status").css('opacity', 1);
     }, 500);
 }, 16000);
 getBlog();
