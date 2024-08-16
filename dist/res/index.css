@@ -560,7 +560,8 @@ body {
     font-family: 'Monocraft';
     text-shadow:3px 3px #3F3F00;
 	font-size: x-large;
-  
+	transition: all 1s ease;
+	opacity: 1;
     /* position: absolute; */
 }
 .pop {

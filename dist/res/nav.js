@@ -30,7 +30,9 @@ var splash_text = [
     "Now with backend!",
     "Where back!",
     "New and improved",
-    "Chattttt"
+    "Chattttt",
+    "All the stats",
+    `<a href="javascript:window.open('https://shoelace.style')">shoelace.style</a>`
 ];
 var socials = {
     "discord": {
@@ -74,13 +76,73 @@ var socials = {
         "handel": "@Jackboback32"
     },
 }
-var GAS_url = "https://script.google.com/macros/s/AKfycbwpmWZa7t6SVVTtTaaCB5s_ehdbR_FVE0fSA7DqfpEnayP0P-G218kgu1POOe_9a_GPpw/exec";
+var GAS_url = "https://script.google.com/macros/s/AKfycbwAFuaRRxiXowBNT8gtkY_iUT7uVHtN_SbMJQrdcwBLLrst-ydinIceoZag7EdCXC2LaA/exec";
 var blur_intervalTimer = null;
 var blur_timeoutTimer = null;
 var analytics = [];
 var hash = window.location.hash;
 var startPage = "cont-home";
 $("#status").html(splash_text[Math.floor(Math.random()*splash_text.length)])
+
+
+
+
+const originalFetch = window.fetch;
+
+// Override the fetch function
+window.fetch = async function (...args) {
+    console.log('Fetch called with arguments:', args);
+
+    // You can modify the arguments here if needed
+    const modifiedArgs = [...args];
+
+    // Call the original fetch function with the modified arguments
+    const response = await originalFetch.apply(this, modifiedArgs);
+
+    // You can modify the response here if needed
+    console.log('Fetch response:', response);
+
+    return response;
+};
+
+
+// Store the original XMLHttpRequest
+const OriginalXMLHttpRequest = window.XMLHttpRequest;
+
+class CustomXMLHttpRequest extends OriginalXMLHttpRequest {
+    constructor() {
+        super();
+
+        // Override the open method
+        const originalOpen = this.open;
+        this.open = function (method, url, ...rest) {
+            console.log('XMLHttpRequest open called with:', method, url);
+
+            // You can modify the URL or method here if needed
+            const modifiedURL = url;
+
+            return originalOpen.call(this, method, modifiedURL, ...rest);
+        };
+
+        // Override the send method
+        const originalSend = this.send;
+        this.send = function (...args) {
+            console.log('XMLHttpRequest send called with:', args);
+
+            // You can modify the request body here if needed
+
+            return originalSend.apply(this, args);
+        };
+    }
+}
+
+// Replace the global XMLHttpRequest with the custom one
+window.XMLHttpRequest = CustomXMLHttpRequest;
+
+
+
+
+
 
 
 if (hash == "#about") {
@@ -367,6 +429,10 @@ async function displayBlog() {
     }
 
     blog_loaded = true;
+}
+
+function periodicallyRun(callback, interval) {
+    setInterval(callback, interval);
 }
 
 function displayProjects() {
@@ -712,5 +778,12 @@ setTimeout(function(){
     }
 },5000)
 
-
+periodicallyRun(() => {
+    $("#status").css('opacity',0);
+    setTimeout(() => {
+        $("#status").html(splash_text[Math.floor(Math.random()*splash_text.length)]);
+        $("#splash")[0].play = true
+        $("#status").css('opacity',1);
+    }, 500);
+}, 16000);
 getBlog();
