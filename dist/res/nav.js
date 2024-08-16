@@ -182,8 +182,26 @@ function showCont(nav,anim) {
 function resizeItems() {
     $("#about-me").width("calc(100% - " + $("#about-side").width() + "px - 35px)")
     $("#socials").css("margin-top","calc("+$("#langs").height()+"px + 10% + 20px)")
+    $("#blog-notif").css('top',$("#blog-button").position().top - 5);
+    $("#blog-notif").css('left',$("#blog-button").position().left + 20);
 }
 
+function showBnotif() {
+    var gg = localStorage.getItem("blog-len");
+    if (gg == null) {
+        localStorage.setItem("blog-len",JSON.stringify(fetchedData.blog.length));
+        $("#blog-notif").hide();
+    }else {
+        gg = JSON.parse(gg);
+        if (gg !== fetchedData.blog.length) {
+            $("#blog-notif").show();
+            $("#blog-notif").html(fetchedData.blog.length - gg);
+        }else {
+            $("#blog-notif").hide();
+            localStorage.setItem("blog-len",JSON.stringify(fetchedData.blog.length));
+        }
+    }
+}
 
 function delay(time) {
     return new Promise(resolve => setTimeout(resolve, time));
@@ -334,6 +352,8 @@ function sleep(ms) {
 
 
 async function playBlogAnim() {
+    localStorage.setItem('blog-len',JSON.stringify(fetchedData.blog.length));
+    $("#blog-notif").hide()
     if (!blog_loaded) {
         return;
     }
@@ -347,6 +367,7 @@ async function playBlogAnim() {
 
 async function displayBlog() {
     $("#JB_blog").html('');
+    showBnotif();
     var ldd = [];
     for (i in fetchedData.blog) {
         var d = fetchedData.blog[i];

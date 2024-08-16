@@ -207,6 +207,10 @@ sl-details::part(summary) {
 	height: 80%;
     overflow-y: scroll;
 }
+#blog-notif {
+	position: fixed;
+	display: none;
+}
 
 #welcome {
 	width: 80vw;

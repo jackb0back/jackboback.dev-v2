@@ -293,7 +293,7 @@
 
 
               <div class="glass playonload" id="langs">
-                <h4 style="margin: 0;" class="scale-text">Langauages</h4>
+                <h4 style="margin: 0;margin-bottom: 5px;" class="scale-text">Languages</h4>
                
                   <sl-animation name="rubberBand" duration="1000" iterations="1">
                       <img class="lang" onmouseenter="this.parentElement.play = true" onclick="this.parentElement.play = true" src="https://static-00.iconduck.com/assets.00/js-icon-2048x2048-kbwt89q3.png" alt="langauge">
@@ -404,7 +404,8 @@
         <img onclick="showCont('cont-home',1)" class="icon" src="https://cdn.jsdelivr.net/gh/jackb0back/streamingAssets@main/OASISX/home.png" alt="">
       </sl-tooltip>
       <sl-tooltip class="sl-theme-dark" content="Blog">
-        <img onclick="showCont('cont-blog');playBlogAnim()" class="icon" src="res/assets/blog.png" alt="">
+        <img id="blog-button" onclick="showCont('cont-blog');playBlogAnim();" class="icon" src="res/assets/blog.png" alt="">
+        <sl-badge id="blog-notif" pulse pill>30</sl-badge>
       </sl-tooltip>
       <sl-tooltip class="sl-theme-dark" content="Projects">
         <img onclick="showCont('cont-projects')" class="icon" src="res/assets/code.png" alt="">
