@@ -17,7 +17,9 @@ function getBasePath(subpath = "") {
       if (fallbackScript) {
         path = fallbackScript.getAttribute("src");
       }
-      setBasePath(path.split("/").slice(0, -1).join("/"));
+      console.log(path.split("/").slice(0, -1).join("/"))
+      // setBasePath(path.split("/").slice(0, -1).join("/"));
+      setBasePath(window.origin + "/res/shoelace_cdn/cdn");
     }
   }
   return basePath.replace(/\/$/, "") + (subpath ? `/${subpath.replace(/^\//, "")}` : ``);

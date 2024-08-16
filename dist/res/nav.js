@@ -87,64 +87,6 @@ $("#status").html(splash_text[Math.floor(Math.random()*splash_text.length)])
 
 
 
-const originalFetch = window.fetch;
-
-// Override the fetch function
-window.fetch = async function (...args) {
-    console.log('Fetch called with arguments:', args);
-
-    // You can modify the arguments here if needed
-    const modifiedArgs = [...args];
-
-    // Call the original fetch function with the modified arguments
-    const response = await originalFetch.apply(this, modifiedArgs);
-
-    // You can modify the response here if needed
-    console.log('Fetch response:', response);
-
-    return response;
-};
-
-
-// Store the original XMLHttpRequest
-const OriginalXMLHttpRequest = window.XMLHttpRequest;
-
-class CustomXMLHttpRequest extends OriginalXMLHttpRequest {
-    constructor() {
-        super();
-
-        // Override the open method
-        const originalOpen = this.open;
-        this.open = function (method, url, ...rest) {
-            console.log('XMLHttpRequest open called with:', method, url);
-
-            // You can modify the URL or method here if needed
-            const modifiedURL = url;
-
-            return originalOpen.call(this, method, modifiedURL, ...rest);
-        };
-
-        // Override the send method
-        const originalSend = this.send;
-        this.send = function (...args) {
-            console.log('XMLHttpRequest send called with:', args);
-
-            // You can modify the request body here if needed
-
-            return originalSend.apply(this, args);
-        };
-    }
-}
-
-// Replace the global XMLHttpRequest with the custom one
-window.XMLHttpRequest = CustomXMLHttpRequest;
-
-
-
-
-
-
-
 if (hash == "#about") {
     startPage = "cont-contact"
 }else if (hash.includes("#")) {

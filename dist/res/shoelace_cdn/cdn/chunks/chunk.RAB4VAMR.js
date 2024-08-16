@@ -16,6 +16,7 @@ __export(dist_exports, {
   bounce: () => bounce,
   bounceIn: () => bounceIn,
   bounceInDown: () => bounceInDown,
+  bounceInDownRot: () => bounceInDownRot,
   bounceInLeft: () => bounceInLeft,
   bounceInRight: () => bounceInRight,
   bounceInUp: () => bounceInUp,
@@ -346,6 +347,19 @@ var bounceInDown = [
   { offset: 0.9, transform: "translate3d(0, 5px, 0) scaleY(0.985)" },
   { offset: 0.9, easing: "cubic-bezier(0.215, 0.61, 0.355, 1)" },
   { offset: 1, transform: "translate3d(0, 0, 0)" },
+  { offset: 1, easing: "cubic-bezier(0.215, 0.61, 0.355, 1)" }
+];
+
+var bounceInDownRot = [
+  { offset: 0, opacity: "0", transform: "rotate(-20deg) translate3d(0, -3000px, 0) scaleY(3)" },
+  { offset: 0, easing: "cubic-bezier(0.215, 0.61, 0.355, 1)" },
+  { offset: 0.6, opacity: "1", transform: "rotate(-20deg) translate3d(0, 25px, 0) scaleY(0.9)" },
+  { offset: 0.6, easing: "cubic-bezier(0.215, 0.61, 0.355, 1)" },
+  { offset: 0.75, transform: "rotate(-20deg) translate3d(0, -10px, 0) scaleY(0.95)" },
+  { offset: 0.75, easing: "cubic-bezier(0.215, 0.61, 0.355, 1)" },
+  { offset: 0.9, transform: "rotate(-20deg) translate3d(0, 5px, 0) scaleY(0.985)" },
+  { offset: 0.9, easing: "cubic-bezier(0.215, 0.61, 0.355, 1)" },
+  { offset: 1, transform: "rotate(-20deg) translate3d(0, 0, 0)" },
   { offset: 1, easing: "cubic-bezier(0.215, 0.61, 0.355, 1)" }
 ];
 
