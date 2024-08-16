@@ -5,6 +5,7 @@ var currentNav = home;
 for (let i = 0; i < navs.length; i++) {
     navs[i].style.display = "none";
 }
+var blog_loaded = false;
 var loaded = false;
 var api_route = ".netlify/functions/api"
 var title = document.title;
@@ -319,18 +320,53 @@ function isBase64(str) {
     }
 }
 
-function displayBlog() {
-    document.getElementById("JB_blog").innerHTML = "";
-    for (let i = 0; i < fetchedData.blog.length; i++) {
-        if (isBase64(fetchedData.blog[i].cont)) {
-            fetchedData.blog[i].cont = atob(fetchedData.blog[i].cont);
-        }
-        document.getElementById("JB_blog").innerHTML = `
-       <div class="vertical-rect glass"><h2 style="margin:0;">${fetchedData.blog[i].title}</h2><h5 style="margin:0;margin-top:5px;margin-bottom:5px;">Posted by:${fetchedData.blog[i].poster} on ${fetchedData.blog[i].date}</h5>
-       ${fetchedData.blog[i].cont}
-       </div>
-       ` + document.getElementById("JB_blog").innerHTML;
+function sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+
+async function playBlogAnim() {
+    if (!blog_loaded) {
+        return;
     }
+    $(".blog-post").hide()
+    for (let i = 0; i <  $(".blog-post").length; i++) {
+        $(".blog-post")[i].parentElement.play = true;
+        $(".blog-post")[i].style.display = "block"
+        await sleep(100);
+    }
+}
+
+async function displayBlog() {
+    $("#JB_blog").html('');
+    var ldd = [];
+    for (i in fetchedData.blog) {
+        var d = fetchedData.blog[i];
+        var clone = $("#template-blog")[0].content.cloneNode(true);
+        if (ldd.includes(d._id)) {
+            d._id = d._id + "_2"    
+        }
+        $(clone).find("sl-details").html("<b style='text-decoration:underline;'>posted on: " + d.date + "<br><br></b>" + atob(d.cont));
+        $(clone).find("sl-details")[0].summary = d.title;
+        $(clone).find("sl-details")[0].id = d._id;
+        await $("#JB_blog").append(clone);
+
+        await sleep(520)
+            // console.log($("#"+d._id)[0].shadowRoot);
+        $($("#"+d._id)[0].shadowRoot).find("summary slot")[0].innerHTML += `
+        <div style="position:absolute;right:50px;backgrond-color:black;">
+           <b style="color:#ffffff9c;font-size:small;position: absolute;top: -50%;transform: translateY(-55%);right: 50%;margin-right: 10px;">${d.date}</b> <sl-icon style="display: inline-block;position: absolute;top: 50%;transform: translateY(-50%);" class="date-posted" name="clock"></sl-icon>
+        </div>
+        `
+        ldd.push(d._id);
+    }
+
+
+    for (let i = 0; i < $("pre").length; i++) {
+        hljs.highlightElement($("pre")[i])  
+    }
+
+    blog_loaded = true;
 }
 
 function displayProjects() {
@@ -369,7 +405,7 @@ function getBlog() {
         fetchedData.blog = dat;
         fetchedData.blog.reverse();
         console.log(fetchedData.blog);
-        // displayBlog();
+        displayBlog();
     })
 }
 
@@ -672,6 +708,9 @@ showCont(startPage,false);
 
 setTimeout(function(){
     if (!loaded) {
-        $("#fadeout").html("<h1>Click the page bozo</h1>");
+        $("#fadeout").html("<h1>(you're supposed to click the page)</h1>");
     }
 },5000)
+
+
+getBlog();

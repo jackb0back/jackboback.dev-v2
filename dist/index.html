@@ -98,7 +98,7 @@
             <sl-button onclick="pubUpdate()" variant="success">Publish site update</sl-button>
             </div>
         <div class="cont" id="cont-home">
-          <h3 style="color: red;">[SITE UNDER MAINTENANCE]</h3>
+          <h3 style="color: red;">[Almost done]</h3>
         <h1>Home</h1>
         <!--
             <div onmouseleave="enableScroll()" onmousewheel="scrollContent(this);" class="items" id="home-lat"  style="width: 90%;"><div class="rect glass">test</div><div class="rect glass"></div><div class="rect glass"></div><div class="rect glass">See all...</div></div>
@@ -126,7 +126,9 @@
       <div class="cont" id="cont-blog">
         <h1>Blog</h1>
         <div id="JB_blog" style="height: 70vh;">
-          <sl-details class="blog-post" summary="Toggle Me"> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </sl-details>
+          <sl-details class="blog-post" summary="Toggle Me">
+            aaaa
+          </sl-details>
           <sl-details class="blog-post" summary="Toggle Me"> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </sl-details>
           <sl-details class="blog-post" summary="Toggle Me"> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </sl-details>
         </div>
@@ -402,7 +404,7 @@
         <img onclick="showCont('cont-home',1)" class="icon" src="https://cdn.jsdelivr.net/gh/jackb0back/streamingAssets@main/OASISX/home.png" alt="">
       </sl-tooltip>
       <sl-tooltip class="sl-theme-dark" content="Blog">
-        <img onclick="showCont('cont-blog')" class="icon" src="res/assets/blog.png" alt="">
+        <img onclick="showCont('cont-blog');playBlogAnim()" class="icon" src="res/assets/blog.png" alt="">
       </sl-tooltip>
       <sl-tooltip class="sl-theme-dark" content="Projects">
         <img onclick="showCont('cont-projects')" class="icon" src="res/assets/code.png" alt="">
@@ -424,6 +426,13 @@
           <a href="javascript:">View</a>
         </div>
       </div>
+    </template>
+
+
+    <template id="template-blog">
+      <sl-animation name="backInLeft" easing="ease-in-out" duration="1000" iterations="1" play>
+          <sl-details class="blog-post" summary=""></sl-details>
+      </sl-animation>
     </template>
 
     <div id="popups"></div>

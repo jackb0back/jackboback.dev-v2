@@ -693,7 +693,8 @@ body {
     color: white !important;
 }
 #editor {
-    min-height: 200px;
+    height: 400px;
+	overflow-y: scroll;
 }
 #board-autofill {
     margin-bottom: 10px;
