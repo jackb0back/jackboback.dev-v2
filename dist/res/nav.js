@@ -412,15 +412,62 @@ function periodicallyRun(callback, interval) {
     setInterval(callback, interval);
 }
 
+function displayImages(arr) {
+    var g = `
+    <div onclick="if (event.target == this) {$(this).remove()}" class="img-overlay">
+    <sl-carousel pagination navigation mouse-dragging loop>
+    `
+
+    for (i in arr) {
+        console.log(i,arr)
+        g += `
+          <sl-carousel-item>
+            <img
+            alt=""
+            src="${arr[i]}"
+            />
+        </sl-carousel-item>
+        `        
+    }
+
+
+    g += `</sl-carousel></div>`
+    $("#popups")[0].innerHTML += g;
+}
+
+
 async function displayProjects() {
     $("#projects").html("");
     for (i in fetchedData.projects) {
         console.log(i)
         var clone = $("#template-project")[0].content.cloneNode(true);
-        if (fetchedData.projects[i].img == "") {
-            fetchedData.projects[i].img = "res/assets/404.png"
+        if (fetchedData.projects[i].view !== null) {
+            $(clone).find(".proj-view")[0].href = `javascript:window.open('${fetchedData.projects[i].view}');`;
+        }else {
+            $(clone).find(".proj-view").hide()
         }
-        $(clone).find("img")[0].src = fetchedData.projects[i].img;
+        if (fetchedData.projects[i].download !== null) {
+            $(clone).find(".proj-download")[0].href = `javascript:window.open('${fetchedData.projects[i].download}');`;
+        }else {
+            $(clone).find(".proj-download").hide()
+        }
+        $(clone).find("img").data("index",i);
+        $(clone).find("img")[0].id = "proj-" + i;
+        var img = fetchedData.projects[i].img;
+        if (typeof img !== "string") {
+            img = img[0];
+            console.log(fetchedData.projects[i].img);
+            $(clone).find("img").on("click", (event) => {
+                displayImages(fetchedData.projects[$(event.target).data().index].img);
+            });
+            $(clone).find("img").css("cursor","pointer");
+        }else {
+            $(clone).find(".proj-more").hide();
+            if (fetchedData.projects[i].img == "") {
+                img = "res/assets/404.png"
+            }
+        }
+        $(clone).find("img")[0].src = img;
         $(clone).find(".proj-tit").html(fetchedData.projects[i].name);
         $(clone).find(".proj-desc").html(fetchedData.projects[i].desc);
         $(clone).find(".proj-date").html(fetchedData.projects[i].date);

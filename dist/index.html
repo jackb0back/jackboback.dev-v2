@@ -98,7 +98,6 @@
             <sl-button onclick="pubUpdate()" variant="success">Publish site update</sl-button>
             </div>
         <div class="cont" id="cont-home">
-          <h3 style="color: red;">[Almost done]</h3>
         <h1>Home</h1>
         <!--
             <div onmouseleave="enableScroll()" onmousewheel="scrollContent(this);" class="items" id="home-lat"  style="width: 90%;"><div class="rect glass">test</div><div class="rect glass"></div><div class="rect glass"></div><div class="rect glass">See all...</div></div>
@@ -296,15 +295,15 @@
                 <h4 style="margin: 0;margin-bottom: 5px;" class="scale-text">Languages</h4>
                
                   <sl-animation name="rubberBand" duration="1000" iterations="1">
-                      <img class="lang" onmouseenter="this.parentElement.play = true" onclick="this.parentElement.play = true" src="https://static-00.iconduck.com/assets.00/js-icon-2048x2048-kbwt89q3.png" alt="langauge">
+                      <img class="lang" onmouseenter="this.parentElement.play = true" onclick="this.parentElement.play = true" src="res/assets/js.png" alt="langauge">
                   </sl-animation> 
                
                   <sl-animation name="rubberBand" duration="1000" iterations="1">
-                      <img style="scale: 1.3;" class="lang" onmouseenter="this.parentElement.play = true" onclick="this.parentElement.play = true" src="https://img.icons8.com/color/200/html-5.png" alt="langauge">
+                      <img style="scale: 1.3;" class="lang" onmouseenter="this.parentElement.play = true" onclick="this.parentElement.play = true" src="res/assets/html.png" alt="langauge">
                   </sl-animation>
       
                   <sl-animation name="rubberBand" duration="1000" iterations="1">
-                      <img class="lang" onmouseenter="this.parentElement.play = true" onclick="this.parentElement.play = true" src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/62/CSS3_logo.svg/2048px-CSS3_logo.svg.png" alt="langauge">
+                      <img class="lang" onmouseenter="this.parentElement.play = true" onclick="this.parentElement.play = true" src="res/assets/css.png" alt="langauge">
                   </sl-animation>
       
                   <sl-animation name="rubberBand" duration="1000" iterations="1">
@@ -312,7 +311,7 @@
                   </sl-animation> 
       
                   <sl-animation name="rubberBand" duration="1000" iterations="1">
-                      <img class="lang" onmouseenter="this.parentElement.play = true" onclick="this.parentElement.play = true" src="https://static-00.iconduck.com/assets.00/c-sharp-c-icon-1822x2048-wuf3ijab.png" alt="langauge">
+                      <img class="lang" onmouseenter="this.parentElement.play = true" onclick="this.parentElement.play = true" src="res/assets/cs.png" alt="langauge">
                   </sl-animation> 
             
               </div>
@@ -419,13 +418,14 @@
       <div class="card-style glass proj-item">
         <img src="https://25.media.tumblr.com/tumblr_li9nogR9Wv1qhjikro1_500.gif" class="image-style proj-img" />
         <div class="card-content">
+          <sl-badge class="proj-more">click to view images</sl-badge>
           <h2 class="proj-tit">Text here</h2>
           <p class="proj-date"></p>
           <p class="proj-desc">Here you can see a short description of this card.</p>
         </div>
         <div class="card-bottom">
-          <a href="javascript:">Download</a>
-          <a href="javascript:">View</a>
+          <a class="proj-download" href="javascript:">Download</a>
+          <a class="proj-view" href="javascript:">View</a>
         </div>
       </div>
       </sl-animation>

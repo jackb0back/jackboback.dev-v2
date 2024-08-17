@@ -492,17 +492,16 @@ body.wb-lock .winbox {
 
 
 .header {
-	position: absolute;
-	text-align: center;
-	color: white;
-	bottom: 0;
-	left: 50%;
-	transform: translate(-50%);
-	width: 100vw;
-	margin: 0;
-	height: 100%;
-	z-index: -99999999;
-
+    position: fixed;
+    text-align: center;
+    color: white;
+    bottom: 0;
+    left: 50%;
+    transform: translate(-50%);
+    width: 100vw;
+    margin: 0;
+    height: 100vh;
+    z-index: -99999999;
 }
 
 
