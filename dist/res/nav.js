@@ -574,7 +574,7 @@ function createPost() {
                 })
               };
               
-              fetch('http://localhost:8888/.netlify/functions/api/', options)
+              fetch(window.location.origin+'/.netlify/functions/api/', options)
                 .then(response => response.text())
                 .then(response => {
                    console.log(response);
