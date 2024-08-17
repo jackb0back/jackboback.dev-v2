@@ -394,7 +394,7 @@ async function displayBlog() {
             // console.log($("#"+d._id)[0].shadowRoot);
         $($("#"+d._id)[0].shadowRoot).find("summary slot")[0].innerHTML += `
         <div style="position:absolute;right:50px;backgrond-color:black;">
-           <b style="color:#ffffff9c;font-size:small;position: absolute;top: -50%;transform: translateY(-55%);right: 50%;margin-right: 10px;">${d.date}</b> <sl-icon style="display: inline-block;position: absolute;top: 50%;transform: translateY(-50%);" class="date-posted" name="clock"></sl-icon>
+           <b style="font-weight:normal;color:#ffffff9c;font-size:small;position: absolute;top: -50%;transform: translateY(-55%);right: 50%;margin-right: 10px;">${d.date}</b> <sl-icon style="display: inline-block;position: absolute;top: 50%;transform: translateY(-50%);" class="date-posted" name="clock"></sl-icon>
         </div>
         `
         ldd.push(d._id);
@@ -488,6 +488,15 @@ function getProjects() {
         })
 }
 
+function sortByDate(arr) {
+    return arr.sort((a, b) => {
+        const [monthA, dayA, yearA] = a.date.split('/');
+        const [monthB, dayB, yearB] = b.date.split('/');
+        const dateA = new Date(`${yearA}-${monthA}-${dayA}`);
+        const dateB = new Date(`${yearB}-${monthB}-${dayB}`);
+        return dateA - dateB;
+    });
+}
 
 function getBlog() {
     fetch(window.origin + "/" + api_route + "/blog", {
@@ -496,6 +505,7 @@ function getBlog() {
     .then(res => res.json())
     .then(dat => {
         fetchedData.blog = dat;
+        fetchedData.blog = sortByDate(fetchedData.blog);
         fetchedData.blog.reverse();
         console.log(fetchedData.blog);
         displayBlog();
