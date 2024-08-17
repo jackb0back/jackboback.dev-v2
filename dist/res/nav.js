@@ -365,6 +365,16 @@ async function playBlogAnim() {
     }
 }
 
+
+async function playProjAnim() {
+    $(".proj-item").hide()
+    for (let i = 0; i <  $(".proj-item").length; i++) {
+        $(".proj-item")[i].parentElement.play = true;
+        $(".proj-item")[i].style.display = "block"
+        await sleep(200);
+    }
+}
+
 async function displayBlog() {
     $("#JB_blog").html('');
     showBnotif();
@@ -402,16 +412,19 @@ function periodicallyRun(callback, interval) {
     setInterval(callback, interval);
 }
 
-function displayProjects() {
+async function displayProjects() {
     $("#projects").html("");
     for (i in fetchedData.projects) {
         console.log(i)
         var clone = $("#template-project")[0].content.cloneNode(true);
-//        console.log($(clone))
+        if (fetchedData.projects[i].img == "") {
+            fetchedData.projects[i].img = "res/assets/404.png"
+        }
         $(clone).find("img")[0].src = fetchedData.projects[i].img;
         $(clone).find(".proj-tit").html(fetchedData.projects[i].name);
         $(clone).find(".proj-desc").html(fetchedData.projects[i].desc);
         $(clone).find(".proj-date").html(fetchedData.projects[i].date);
+        await sleep(100)
         $("#projects").append(clone);
     }
 }
@@ -773,3 +786,4 @@ periodicallyRun(() => {
     }, 500);
 }, 16000);
 getBlog();
+getProjects();

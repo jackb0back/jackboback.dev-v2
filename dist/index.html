@@ -38,11 +38,11 @@
     <!-- <div class="scanlines crt"></div> -->
     <div id="tnav" class="glass">
       <div id="startup-anims">
-        <sl-animation style="display: none;" name="bounceInLeft" easing="ease-out" delay="200" duration="2000" iterations="1" >
+        <sl-animation style="display: none;" name="bounceInLeft" easing="ease-out" delay="200" duration="2200" iterations="1" >
           <h1 style="display: inline-block;letter-spacing: -5px;font-weight: bold;" class="rainbow Mars">Jackboback . dev</h1>
         </sl-animation>
         
-        <sl-animation style="display: none;" name="bounceInRight" easing="ease-out" delay="200" duration="2000" iterations="1" >
+        <sl-animation style="display: none;" name="bounceInRight" easing="ease-out" delay="200" duration="2200" iterations="1" >
           <h3 style="display: inline-block;font-weight:100;">v2.5</h3>
         </sl-animation>
         </div>
@@ -408,14 +408,15 @@
         <sl-badge id="blog-notif" pulse pill>30</sl-badge>
       </sl-tooltip>
       <sl-tooltip class="sl-theme-dark" content="Projects">
-        <img onclick="showCont('cont-projects')" class="icon" src="res/assets/code.png" alt="">
+        <img onclick="showCont('cont-projects');playProjAnim()" class="icon" src="res/assets/code.png" alt="">
       </sl-tooltip>
       <sl-tooltip class="sl-theme-dark" content="About">
         <img onclick="showCont('cont-contact');resizeItems()" class="icon" src="res/assets/new-icon.png" alt="">
       </sl-tooltip>
     </div>
     <template id="template-project">
-      <div class="card-style">
+      <sl-animation name="zoomInDown" duration="2000" iterations="1" play>
+      <div class="card-style glass proj-item">
         <img src="https://25.media.tumblr.com/tumblr_li9nogR9Wv1qhjikro1_500.gif" class="image-style proj-img" />
         <div class="card-content">
           <h2 class="proj-tit">Text here</h2>
@@ -427,6 +428,7 @@
           <a href="javascript:">View</a>
         </div>
       </div>
+      </sl-animation>
     </template>
 
 
