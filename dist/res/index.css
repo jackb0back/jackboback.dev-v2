@@ -254,7 +254,7 @@ sl-details::part(summary) {
 	margin: auto;
 	margin-top: 20px;
 	overflow-y: scroll;
-	max-height: 70%;
+	max-height: 85%;
 }
 .image-style {
     height: 250px;
