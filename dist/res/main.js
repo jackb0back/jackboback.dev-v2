@@ -5,6 +5,7 @@ var currentNav = home;
 for (let i = 0; i < navs.length; i++) {
     navs[i].style.display = "none";
 }
+var shoelace_loaded = false;
 var blog_loaded = false;
 var loaded = false;
 var api_route = ".netlify/functions/api"
@@ -86,6 +87,7 @@ var blur_timeoutTimer = null;
 var analytics = [];
 var hash = window.location.hash;
 var startPage = "cont-home";
+var dev_loaded = false;
 $("#status").html(splash_text[Math.floor(Math.random()*splash_text.length)])
 
 
@@ -379,6 +381,11 @@ async function displayBlog() {
     $("#JB_blog").html('');
     showBnotif();
     var ldd = [];
+    while (!shoelace_loaded) {
+        console.log("shoelace not loaded, waiting")
+        await sleep(100);
+
+    }
     for (i in fetchedData.blog) {
         var d = fetchedData.blog[i];
         var clone = $("#template-blog")[0].content.cloneNode(true);
@@ -389,9 +396,16 @@ async function displayBlog() {
         $(clone).find("sl-details")[0].summary = d.title;
         $(clone).find("sl-details")[0].id = d._id;
         await $("#JB_blog").append(clone);
-
-        await sleep(520)
-            // console.log($("#"+d._id)[0].shadowRoot);
+        $(clone).hide()
+       // await sleep(520);
+        var rdy = false;
+        while(!rdy) {
+            if ($("#"+d._id)[0].shadowRoot !== null) {
+                rdy = true;
+            }
+            await sleep(250);
+        }
+        $(clone).show();
         $($("#"+d._id)[0].shadowRoot).find("summary slot")[0].innerHTML += `
         <div style="position:absolute;right:50px;backgrond-color:black;">
            <b style="font-weight:normal;color:#ffffff9c;font-size:small;position: absolute;top: -50%;transform: translateY(-55%);right: 50%;margin-right: 10px;">${d.date}</b> <sl-icon style="display: inline-block;position: absolute;top: 50%;transform: translateY(-50%);" class="date-posted" name="clock"></sl-icon>
@@ -599,6 +613,9 @@ function handleKeyPress(event) {
     if (event.key == "~") {
         showCont("cont-dev");
     }
+    if (event.key == "!") {
+        devStuff();
+    }
 }
 
 async function getPublicIP() {
@@ -791,6 +808,46 @@ function copyAndShuffleArray(arr) {
     return copiedArray;
 }
 
+function devStuff() {
+    if (dev_loaded) {
+        $("#dev").toggle();
+        return;
+    }
+    var stats = new Stats();
+    stats.showPanel( 0 ); // 0: fps, 1: ms, 2: mb, 3+: custom
+    $("#dev").append( stats.dom );
+    function animate() {
+        stats.begin();
+        stats.end();
+        requestAnimationFrame( animate );
+    }
+
+    requestAnimationFrame( animate );
+    $("#dev").show();
+    dev_loaded = true;
+}
+
+function fpsMeter() {
+    let prevTime = Date.now(),
+        frames = 0;
+
+    requestAnimationFrame(function loop() {
+      const time = Date.now();
+      frames++;
+      if (time > prevTime + 1000) {
+        let fps = Math.round( ( frames * 1000 ) / ( time - prevTime ) );
+        prevTime = time;
+        frames = 0;
+
+        // console.info('FPS: ', fps);
+        $("#FPS").html("FPS: " + fps);
+      }
+
+      requestAnimationFrame(loop);
+    });
+  }
+
+
 function playAudioOnInteraction() {
     const audio = new Audio('res/assets/music.mp3');
     audio.volume = 0.1;
@@ -844,3 +901,4 @@ periodicallyRun(() => {
 }, 16000);
 getBlog();
 getProjects();
+fpsMeter();
